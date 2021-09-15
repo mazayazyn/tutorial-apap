@@ -5,7 +5,7 @@
 ## Tutorial 2
 ### What I have learned today
 
-Pada tutorial kedua ini, saya tidak hanya menyalin code dari dokumen tutorial, tetapi juga harus membuat beberapa code di controller. Kesulitan yang saya alami adalah ketika salah menaruh package, yang seharusnya berada di directory main, tetapi saya tadi menaruhnya di directory test. Dengan adanya kejadian ini, saya menjadi lebih berhati-hati dan teliti dalam melakukan setiap step untuk pengembangan fitur sehingga tidak banyak waktu yang terbuang. Selain itu, saya juga mengeksplorasi konsep MVC dengan mempelajari lebih dalam tentang model dan service. Istilah model mengacu pada objek yang menyimpan informasi mengenai suatu hal. Sementara, istilah service digunakan untuk mendefinisikan method yang dapat dijalankan untuk memanipulasi suatu class. Terdapat juga istilah controller, yang berfungsi sebagai request handler dengan cara memetakan sebuah request dari user untuk memanggil service yang diinginkan.
+Pada tutorial kedua ini, saya tidak hanya menyalin code dari dokumen tutorial, tetapi juga harus membuat beberapa code di controller, html, dan lainnya. Kesulitan yang saya alami adalah ketika salah menaruh package, yang seharusnya berada di directory main, tetapi saya tadi menaruhnya di directory test. Dengan adanya kejadian ini, saya menjadi lebih berhati-hati dan teliti dalam melakukan setiap step untuk pengembangan fitur sehingga tidak banyak waktu yang terbuang. Selain itu, saya juga mengeksplorasi konsep MVC dengan mempelajari lebih dalam tentang model dan service. Istilah model mengacu pada objek yang menyimpan informasi mengenai suatu hal. Sementara, istilah service digunakan untuk mendefinisikan method yang dapat dijalankan untuk memanipulasi suatu class. Terdapat juga istilah controller, yang berfungsi sebagai request handler dengan cara memetakan sebuah request dari user untuk memanggil service yang diinginkan.
 
 ### Pertanyaan
 #### 1. Cobalah untuk menambahkan sebuah Bioskop dengan mengakses link berikut: http://localhost:8080/bioskop/add?idBioskop=1&namaBioskop=Bioskop%20PAPA%20 APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx&jumlahStudio=10 Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi
@@ -18,14 +18,15 @@ Pada tutorial kedua ini, saya tidak hanya menyalin code dari dokumen tutorial, t
 > Terjadi error karena pada controller kita telah menetapkan dan menentukan idBioskop, namaBioskop, alamat, noTelepon, dan jumlahStudio sebagai required parameter yang bernilai `true`. Sementara, pada link di atas tidak dicantumkan parameter jumlahStudio sehingga akan menimbulkan error. 
 
 #### 4. Jika Papa APAP ingin melihat Bioskop dengan nama Bioskop Maung, link apa yang harus diakses?
-> Pertama, saya asumsikan saya telah menambahkan bioskop dengan keterangan **id bioskop: 2, nama bioskop: Bioskop Maung, alamat : Depok, nomor telepon: 0218235912, jumlah studio : 220** menggunakan http://localhost:8080/bioskop/add?idBioskop=2&namaBioskop=Bioskop%20Maung&alamat=Depok&noTelepon=0218235912&jumlahStudio=220
+> Pertama, saya asumsikan saya telah menambahkan bioskop dengan keterangan **id bioskop: 2, nama bioskop: Bioskop Maung, alamat : Depok, nomor telepon: 0218235912, jumlah studio : 220** menggunakan `http://localhost:8080/bioskop/add?idBioskop=2&namaBioskop=Bioskop%20Maung&alamat=Depok&noTelepon=0218235912&jumlahStudio=220`
 > Untuk melihat detail bioskop yang dimiliki tanpa mengetahui id bioskop, Papa bisa mengakses link `http://localhost:8080/bioskop/viewall`, lalu mencari nama bioskop tersebut di daftar seluruh bioskop yang muncul beserta id bioskop, alamat, nomor telepon, dan jumlah studio. Akan tetapi, jika Papa mengetahui id bioskop tersebut (diumpamakan id bioskopnya adalah 2), Papa bisa mengakses salah satu dari link di bawah ini agar bisa langsung memperlihatkan informasi bioskop yang dimiliki seorang pasien tanpa harus mencarinya satu per satu di daftar bioskop.
 > - `http://localhost:8080/bioskop/view?idBioskop=2` (jika developer  sistem mengimplementasikan **RequestParam**, sesuaikan idBioskop sesuai dengan id yang ingin dicari)
+> - `http://localhost:8080/bioskop/view/id-bioskop/2` (jika pengembang sistem mengimplementasikan **PathVariable**, sesuaikan idBioskop sesuai dengan id yang ingin dicari))
 
 #### 5. Tambahkan 1 contoh Bioskop lainnya sesukamu. Lalu cobalah untuk mengakses http://localhost:8080/bioskop/viewall, apa yang akan ditampilkan? Sertakan juga bukti screenshotmu.
-> Saya telah menambahkan bioskop dengan keterangan **id bioskop: 3, nama bioskop: Bioskop Mazaya, alamat : Cibubur, nomor telepon: 081215944753, jumlah studio : 7** menggunakan link: http://localhost:8080/bioskop/add?idBioskop=3&namaBioskop=Bioskop%20Mazaya&alamat=Cibubur&noTelepon=081215944753&jumlahStudio=7
-> Lalu saya mencoba untuk mengakses link http://localhost:8080/bioskop/viewall dan terdapat bioskop yang telah saya tambahkan beserta detailnya.
-> Berikut adalah bukti screenshot saya https://ibb.co/v3xRVvt
+> Saya telah menambahkan bioskop dengan keterangan **id bioskop: 3, nama bioskop: Bioskop Mazaya, alamat : Cibubur, nomor telepon: 081215944753, jumlah studio : 7** menggunakan link: `http://localhost:8080/bioskop/add?idBioskop=3&namaBioskop=Bioskop%20Mazaya&alamat=Cibubur&noTelepon=081215944753&jumlahStudio=7`
+> Lalu saya mencoba untuk mengakses link `http://localhost:8080/bioskop/viewall dan terdapat bioskop yang telah saya tambahkan beserta detailnya.`
+> Berikut adalah bukti screenshot saya `https://ibb.co/v3xRVvt`
 
 ----------
 

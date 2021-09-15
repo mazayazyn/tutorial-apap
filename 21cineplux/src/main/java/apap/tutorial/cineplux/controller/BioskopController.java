@@ -89,12 +89,13 @@ public class BioskopController {
 
         model.addAttribute("bioskop", bioskopModel);
         if(bioskopModel != null){
-            // Mengupdatesuatu bioskop dari list
-            bioskopService.updateJumlahStudio(idBioskop, jumlahStudio);
+            // Menghapus suatu bioskop dari list
+            bioskopService.deleteBioskop(idBioskop);
 
-            return "updated-bioskop";
+            return "deleted-bioskop";
         }
         return "error-bioskop";
+
     }
 
   @RequestMapping("/bioskop/delete/id-bioskop/{idBioskop}")
