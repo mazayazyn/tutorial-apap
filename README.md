@@ -25,7 +25,7 @@ Pada tutorial kedua ini, saya tidak hanya menyalin code dari dokumen tutorial, t
 
 #### 5. Tambahkan 1 contoh Bioskop lainnya sesukamu. Lalu cobalah untuk mengakses http://localhost:8080/bioskop/viewall, apa yang akan ditampilkan? Sertakan juga bukti screenshotmu.
 > Saya telah menambahkan bioskop dengan keterangan **id bioskop: 3, nama bioskop: Bioskop Mazaya, alamat : Cibubur, nomor telepon: 081215944753, jumlah studio : 7** menggunakan link: `http://localhost:8080/bioskop/add?idBioskop=3&namaBioskop=Bioskop%20Mazaya&alamat=Cibubur&noTelepon=081215944753&jumlahStudio=7`
-> Lalu saya mencoba untuk mengakses link `http://localhost:8080/bioskop/viewall dan terdapat bioskop yang telah saya tambahkan beserta detailnya.`
+> Lalu saya mencoba untuk mengakses link `http://localhost:8080/bioskop/viewall` dan terdapat bioskop yang telah saya tambahkan beserta detailnya.
 > Berikut adalah bukti screenshot saya `https://ibb.co/v3xRVvt`
 
 ----------

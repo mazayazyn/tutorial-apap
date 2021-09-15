@@ -19,13 +19,13 @@ public class BioskopController {
     //Routing URL yang diinginkan
     @RequestMapping("/bioskop/add")
     public String addBioskop(
-            //Request parameter yang ingin digunakan
-            @RequestParam(value = "idBioskop", required = true) String idBioskop,
-            @RequestParam(value = "namaBioskop", required = true) String namaBioskop,
-            @RequestParam(value = "alamat", required = true) String alamat,
-            @RequestParam(value = "noTelepon", required = true) String noTelepon,
-            @RequestParam(value = "jumlahStudio", required = true) int jumlahStudio,
-            Model model
+        //Request parameter yang ingin digunakan
+        @RequestParam(value = "idBioskop", required = true) String idBioskop,
+        @RequestParam(value = "namaBioskop", required = true) String namaBioskop,
+        @RequestParam(value = "alamat", required = true) String alamat,
+        @RequestParam(value = "noTelepon", required = true) String noTelepon,
+        @RequestParam(value = "jumlahStudio", required = true) int jumlahStudio,
+        Model model
     ) {
         //Membuat objek BioskopModel
         BioskopModel bioskopModel = new BioskopModel(idBioskop, namaBioskop, alamat, noTelepon, jumlahStudio);
@@ -54,8 +54,8 @@ public class BioskopController {
 
     @RequestMapping("/bioskop/view")
     public String detailBioskop(
-            @RequestParam(value = "idBioskop", required = true) String idBioskop,
-            Model model
+        @RequestParam(value = "idBioskop", required = true) String idBioskop,
+        Model model
     ) {
         //Mendapatkan bioskop sesuai dengan idBioskop
         BioskopModel bioskopModel = bioskopService.getBioskopByIdBioskop(idBioskop);
@@ -76,7 +76,12 @@ public class BioskopController {
 
         //Add variable bioskopModel ke "bioskop" untuk dirender pada thymelead
         model.addAttribute("bioskop", bioskopModel);
-        return "view-bioskop";
+
+        if(bioskopModel != null){
+            return "view-bioskop";
+        }
+        //Mengembalikan html apabila id tidak ditemukan
+        return "error-bioskop";
     }
 
     @RequestMapping("/bioskop//update/id-bioskop/{idBioskop}/jumlah-studio/{jumlahStudio}")
@@ -85,33 +90,37 @@ public class BioskopController {
         @PathVariable(value = "jumlahStudio") int jumlahStudio,
         Model model
     ){
-        BioskopModel bioskopModel = bioskopService.updateJumlahStudio(idBioskop, jumlahStudio);
+        //Mendapatkan bioskopModel sesuai dengan idBioskop
+        BioskopModel bioskopModel = bioskopService.getBioskopByIdBioskop(idBioskop);
 
+        //Add variable bioskopModel ke "bioskop" untuk dirender pada thymelead
         model.addAttribute("bioskop", bioskopModel);
-        if(bioskopModel != null){
-            // Menghapus suatu bioskop dari list
-            bioskopService.deleteBioskop(idBioskop);
 
-            return "deleted-bioskop";
+        if(bioskopModel != null){
+            // Mengupdate bioskop dari list
+            bioskopService.updateJumlahStudio(idBioskop, jumlahStudio);
+            return "updated-bioskop";
         }
+        //Mengembalikan html apabila id tidak ditemukan
         return "error-bioskop";
 
     }
 
   @RequestMapping("/bioskop/delete/id-bioskop/{idBioskop}")
   public String deleteBioskop(
-    @PathVariable(value = "idBioskop") String idBioskop,
-    Model model
+      @PathVariable(value = "idBioskop") String idBioskop,
+      Model model
   ){
-    BioskopModel bioskopModel = bioskopService.getBioskopByIdBioskop(idBioskop);
-    model.addAttribute("idbioskop", idBioskop);
+      //Mendapatkan bioskopModel sesuai dengan idBioskop
+      BioskopModel bioskopModel = bioskopService.getBioskopByIdBioskop(idBioskop);
+      model.addAttribute("idbioskop", idBioskop);
 
-    if(bioskopModel != null){
+      if(bioskopModel != null){
         // Menghapus suatu bioskop dari list
         bioskopService.deleteBioskop(idBioskop);
-
         return "deleted-bioskop";
-    }
-    return "error-bioskop";
-    }
+      }
+      //Mengembalikan html apabila id tidak ditemukan
+      return "error-bioskop";
+  }
 }
