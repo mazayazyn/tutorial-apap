@@ -11,7 +11,7 @@ Pada tutorial ketiga kali ini, saya telah mempelajari mengenai konsep MVC di Spr
 #### 1. Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model `@AllArgsConstructor`, `@NoArgsConstructor`, `@Setter`, `@Getter`, `@Entity`, `@Table`)!
 > - `@AllArgsConstructor`: anotasi ini bertujuan untuk men-generate seluruh arguments constructor yang ada di class. Secara default, generated constructor akan public.
 > - `@NoArgsConstructor` : anotasi ini bertujuan untuk men-generate default constructor tanpa parameter atau argumen untuk class.
-`@Getter` dan `@Setter` adalah anotasi Lombok yang digunakan untuk men-generate method Getter dan Setter untuk seluruh fields secara otomatis.
+> `>@Getter` dan `@Setter` adalah anotasi Lombok yang digunakan untuk men-generate method Getter dan Setter untuk seluruh fields secara otomatis.
 > - `@Setter` : anotasi ini bertujuan untuk set ataupun update suatu nilai dari variabel yang ada.
 > - `@Getter` : anotasi ini betujuan untuk mengambil updated value dari suatu variabel.
 > - `@Entity` : anotasi JPA yang digunakan untuk menunjukkan bahwa annotated class adalah JPA entity class.
@@ -28,9 +28,7 @@ Sumber: `https://devwithus.com/crud-api-with-spring-boot-jpa-hibernate-mysql/`
 > - Properti name adalah nama dari suatu entity.
 > - Properti "referencedColumnName" adalah nama kolom dalam tabel yang dijadikan referensi dengan kolom yang dianotasi. Singkatnya, ini adalah kolom yang dirujuk di tabel tujuan.
 > - Properti nullable bisa menyimpan nilai maupun null.
-Perbedaan nullable dan penggunaan anotasi @NotNull:
-> - Perbedaan pertama antara kedua pendekatan adalah spesifikasi yang mendefinisikan kedua anotasi ini. Nullable merupakan properti @Column yang merupakan bagian dari spesifikasi JPA. Anotasi @NotNull ditentukan oleh spesifikasi BeanValidation. 
-> - Perbedaan kedua berdasarkan kegunaannya. Nullable: annotated parameter atau return value dapat menjadi nol dalam beberapa keadaan. Anotasi @NotNull: explicit contract yang menyatakan bahwa method tidak boleh mengembalikan null.
+> - Perbedaan nullable dan penggunaan anotasi @NotNull: Perbedaan pertama antara kedua pendekatan adalah spesifikasi yang mendefinisikan kedua anotasi ini. Nullable merupakan properti @Column yang merupakan bagian dari spesifikasi JPA. Anotasi @NotNull ditentukan oleh spesifikasi BeanValidation.  Perbedaan kedua berdasarkan kegunaannya. Nullable: annotated parameter atau return value dapat menjadi nol dalam beberapa keadaan. Anotasi @NotNull: explicit contract yang menyatakan bahwa method tidak boleh mengembalikan null.
 
 #### 5. Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER!
 > - FetchType.LAZY: digunakan  agar kita bisa mendapatkan data seluruh elemen dalam relasi yang diambil saat dibutuhkan saja, yaitu saat data tersebut dipanggil. FetchType.LAZY merupakan default untuk relasi -to-many.
