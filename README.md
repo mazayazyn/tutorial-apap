@@ -8,27 +8,27 @@
 Pada tutorial ketiga kali ini, saya telah mempelajari mengenai konsep MVC di Spring Boot. Tutorial kali ini juga menjadi ilmu baru bagi saya mengenai konsep-konsep lain di Spring Boot. Dari hasil pelaksanaan tutorial ini, saya berhasil memahami penggunaan pendekatan Object Relational Mapping (ORM), Java Persistence Query Language (JPQL), dan Java Persistence API (JPA). Pemahaman yang saya dapatkan ini saya rangkum pada jawaban dari pertanyaan-pertanyaan di bawah ini.
 
 ### Pertanyaan
-### 1. Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model `@AllArgsConstructor`, `@NoArgsConstructor`, `@Setter`, `@Getter`, `@Entity`, `@Table`)!
+#### 1. Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model `@AllArgsConstructor`, `@NoArgsConstructor`, `@Setter`, `@Getter`, `@Entity`, `@Table`)!
 > - `@AllArgsConstructor`: anotasi ini bertujuan untuk men-generate seluruh arguments constructor yang ada di class. Secara default, generated constructor akan public.
 > - `@NoArgsConstructor` : anotasi ini bertujuan untuk men-generate default constructor tanpa parameter atau argumen untuk class.
-> `@Getter` dan `@Setter` adalah anotasi Lombok yang digunakan untuk men-generate method Getter dan Setter untuk seluruh fields secara otomatis.
+`@Getter` dan `@Setter` adalah anotasi Lombok yang digunakan untuk men-generate method Getter dan Setter untuk seluruh fields secara otomatis.
 > - `@Setter` : anotasi ini bertujuan untuk set ataupun update suatu nilai dari variabel yang ada.
 > - `@Getter` : anotasi ini betujuan untuk mengambil updated value dari suatu variabel.
 > - `@Entity` : anotasi JPA yang digunakan untuk menunjukkan bahwa annotated class adalah JPA entity class.
 > - `@Table` : anotasi ini disediakan oleh JPA dan bertujuan untuk menentukan detail lebih lanjut tentang table yang terkait dengan class.
-> Sumber: `https://devwithus.com/crud-api-with-spring-boot-jpa-hibernate-mysql/`
+Sumber: `https://devwithus.com/crud-api-with-spring-boot-jpa-hibernate-mysql/`
 
 #### 2. Pada class BioskopDB, terdapat method findByNoBioskop, apakah kegunaan dari method tersebut?
 > Tujuan dari method findByNoBioskop adalah untuk menemukan data suatu bioskop berdasarkan nomor bioskopnya. Data ini dapat ditemukan melalui pencarian pada database bioskop. Kita dapat melihat anotasi `@Repository` pada class `BioskopDb` yang menandakan bahwa Spring telah membuat method ini secara otomatis dengan cara menganalisis semua method yang didefinisikan pada interface yang bersesuaian dan  mencoba untuk menghasilkan susunan query dari method findByNoBioskop.
 
-### 3. Jelaskan perbedaan kegunaan dari anotasi @JoinTable dan @JoinColumn!
+#### 3. Jelaskan perbedaan kegunaan dari anotasi @JoinTable dan @JoinColumn!
 > @JoinTable mendefinisikan tabel gabungan dari 2 entitas yang terkait. Jika anotasi JoinTable tidak ada, nilai default elemen anotasi berlaku. Nama tabel gabungan diasumsikan sebagai nama tabel dari tabel utama terkait yang digabungkan bersama (owning side first) menggunakan garis bawah. Sementara, @JoinColumn digunakan untuk memetakan kolom gabungan database dalam entity. @JoinColumn menentukan kolom untuk bergabung dengan entity association atau element collection.
 
-### 4. Pada class PenjagaModel, digunakan anotasi @JoinColumn pada atribut bioskop, apa kegunaan dari name, referencedColumnName, dan nullable dalam anotasi tersebut? dan apa perbedaan nullable dan penggunaan anotasi @NotNull?
+#### 4. Pada class PenjagaModel, digunakan anotasi @JoinColumn pada atribut bioskop, apa kegunaan dari name, referencedColumnName, dan nullable dalam anotasi tersebut? dan apa perbedaan nullable dan penggunaan anotasi @NotNull?
 > - Properti name adalah nama dari suatu entity.
 > - Properti "referencedColumnName" adalah nama kolom dalam tabel yang dijadikan referensi dengan kolom yang dianotasi. Singkatnya, ini adalah kolom yang dirujuk di tabel tujuan.
 > - Properti nullable bisa menyimpan nilai maupun null.
-> Perbedaan nullable dan penggunaan anotasi @NotNull:
+Perbedaan nullable dan penggunaan anotasi @NotNull:
 > - Perbedaan pertama antara kedua pendekatan adalah spesifikasi yang mendefinisikan kedua anotasi ini. Nullable merupakan properti @Column yang merupakan bagian dari spesifikasi JPA. Anotasi @NotNull ditentukan oleh spesifikasi BeanValidation. 
 > - Perbedaan kedua berdasarkan kegunaannya. Nullable: annotated parameter atau return value dapat menjadi nol dalam beberapa keadaan. Anotasi @NotNull: explicit contract yang menyatakan bahwa method tidak boleh mengembalikan null.
 
