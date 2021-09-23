@@ -2,19 +2,56 @@
 ## Authors
 * **AISYAH INDONESIA MAZAYA ZAYN** - *1906399000* - *C*
 
+## Tutorial 3
+### What I have learned today
+
+Pada tutorial ketiga kali ini, saya telah mempelajari mengenai konsep MVC di Spring Boot. Tutorial kali ini juga menjadi ilmu baru bagi saya mengenai konsep-konsep lain di Spring Boot. Dari hasil pelaksanaan tutorial ini, saya berhasil memahami penggunaan pendekatan Object Relational Mapping (ORM), Java Persistence Query Language (JPQL), dan Java Persistence API (JPA). Pemahaman yang saya dapatkan ini saya rangkum pada jawaban dari pertanyaan-pertanyaan di bawah ini.
+
+### Pertanyaan
+### 1. Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model `@AllArgsConstructor`, `@NoArgsConstructor`, `@Setter`, `@Getter`, `@Entity`, `@Table`)!
+> - `@AllArgsConstructor`: anotasi ini bertujuan untuk men-generate seluruh arguments constructor yang ada di class. Secara default, generated constructor akan public.
+> - `@NoArgsConstructor` : anotasi ini bertujuan untuk men-generate default constructor tanpa parameter atau argumen untuk class.
+> `@Getter` dan `@Setter` adalah anotasi Lombok yang digunakan untuk men-generate method Getter dan Setter untuk seluruh fields secara otomatis.
+> - `@Setter` : anotasi ini bertujuan untuk set ataupun update suatu nilai dari variabel yang ada.
+> - `@Getter` : anotasi ini betujuan untuk mengambil updated value dari suatu variabel.
+> - `@Entity` : anotasi JPA yang digunakan untuk menunjukkan bahwa annotated class adalah JPA entity class.
+> - `@Table` : anotasi ini disediakan oleh JPA dan bertujuan untuk menentukan detail lebih lanjut tentang table yang terkait dengan class.
+> Sumber: `https://devwithus.com/crud-api-with-spring-boot-jpa-hibernate-mysql/`
+
+#### 2. Pada class BioskopDB, terdapat method findByNoBioskop, apakah kegunaan dari method tersebut?
+> Tujuan dari method findByNoBioskop adalah untuk menemukan data suatu bioskop berdasarkan nomor bioskopnya. Data ini dapat ditemukan melalui pencarian pada database bioskop. Kita dapat melihat anotasi `@Repository` pada class `BioskopDb` yang menandakan bahwa Spring telah membuat method ini secara otomatis dengan cara menganalisis semua method yang didefinisikan pada interface yang bersesuaian dan  mencoba untuk menghasilkan susunan query dari method findByNoBioskop.
+
+### 3. Jelaskan perbedaan kegunaan dari anotasi @JoinTable dan @JoinColumn!
+> @JoinTable mendefinisikan tabel gabungan dari 2 entitas yang terkait. Jika anotasi JoinTable tidak ada, nilai default elemen anotasi berlaku. Nama tabel gabungan diasumsikan sebagai nama tabel dari tabel utama terkait yang digabungkan bersama (owning side first) menggunakan garis bawah. Sementara, @JoinColumn digunakan untuk memetakan kolom gabungan database dalam entity. @JoinColumn menentukan kolom untuk bergabung dengan entity association atau element collection.
+
+### 4. Pada class PenjagaModel, digunakan anotasi @JoinColumn pada atribut bioskop, apa kegunaan dari name, referencedColumnName, dan nullable dalam anotasi tersebut? dan apa perbedaan nullable dan penggunaan anotasi @NotNull?
+> - Properti name adalah nama dari suatu entity.
+> - Properti "referencedColumnName" adalah nama kolom dalam tabel yang dijadikan referensi dengan kolom yang dianotasi. Singkatnya, ini adalah kolom yang dirujuk di tabel tujuan.
+> - Properti nullable bisa menyimpan nilai maupun null.
+> Perbedaan nullable dan penggunaan anotasi @NotNull:
+> - Perbedaan pertama antara kedua pendekatan adalah spesifikasi yang mendefinisikan kedua anotasi ini. Nullable merupakan properti @Column yang merupakan bagian dari spesifikasi JPA. Anotasi @NotNull ditentukan oleh spesifikasi BeanValidation. 
+> - Perbedaan kedua berdasarkan kegunaannya. Nullable: annotated parameter atau return value dapat menjadi nol dalam beberapa keadaan. Anotasi @NotNull: explicit contract yang menyatakan bahwa method tidak boleh mengembalikan null.
+
+#### 5. Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER!
+> - FetchType.LAZY: digunakan  agar kita bisa mendapatkan data seluruh elemen dalam relasi yang diambil saat dibutuhkan saja, yaitu saat data tersebut dipanggil. FetchType.LAZY merupakan default untuk relasi -to-many.
+> - CascadeType.ALL: digunakan agar seluruh operasi-operasi perubahan yang dilakukan pada parent akan diberlakukan juga secara otomatis pada seluruh child-nya.
+> - FetchType.EAGER: digunakan agar kita bisa mendapatkan data seluruh elemen dalam relasi yang diambil sesegera mungkin/secara langsung agar data yang sudah tersedia saat kita butuhkan. FetchType.EAGER merupakan default untuk relasi -to-one.
+
+----------
+
 ## Tutorial 2
 ### What I have learned today
 
 Pada tutorial kedua ini, saya tidak hanya menyalin code dari dokumen tutorial, tetapi juga harus membuat beberapa code di controller, html, dan lainnya. Kesulitan yang saya alami adalah ketika salah menaruh package, yang seharusnya berada di directory main, tetapi saya tadi menaruhnya di directory test. Dengan adanya kejadian ini, saya menjadi lebih berhati-hati dan teliti dalam melakukan setiap step untuk pengembangan fitur sehingga tidak banyak waktu yang terbuang. Selain itu, saya juga mengeksplorasi konsep MVC dengan mempelajari lebih dalam tentang model dan service. Istilah model mengacu pada objek yang menyimpan informasi mengenai suatu hal. Sementara, istilah service digunakan untuk mendefinisikan method yang dapat dijalankan untuk memanipulasi suatu class. Terdapat juga istilah controller, yang berfungsi sebagai request handler dengan cara memetakan sebuah request dari user untuk memanggil service yang diinginkan.
 
 ### Pertanyaan
-#### 1. Cobalah untuk menambahkan sebuah Bioskop dengan mengakses link berikut: http://localhost:8080/bioskop/add?idBioskop=1&namaBioskop=Bioskop%20PAPA%20 APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx&jumlahStudio=10 Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi
+#### 1. Cobalah untuk menambahkan sebuah Bioskop dengan mengakses link berikut: `http://localhost:8080/bioskop/add?idBioskop=1&namaBioskop=Bioskop%20PAPA%20APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx&jumlahStudio=10` Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi
 > Saat saya membuka link tersebut, saya menemukan WhiteLable Error pada web browser saya. Hal tersebut dikarenakan oleh Controller yang telah berusaha untuk mengakses atau me-return template `“add-bioskop”` yang belum dibuat oleh saya. Solusi untuk permasalah ini adalah dengan membuat HTML template tersebut agar error dapat teratasi. 
 
 #### 2. Menurut kamu anotasi @Autowired pada class Controller tersebut merupakan implementasi dari konsep apa? Dan jelaskan secara singkat cara kerja @Autowired tersebut dalam konteks service dan controller yang telah kamu buat
 > Anotasi @Autowired merupakan implementasi dari konsep dependency injection. Jadi, jika kita menggunakan `@Autowired`, kita tidak perlu lagi menyediakan method setter maupun menambahkan argumen atau parameter di constructor. Anotasi ini bekerja dengan cara melihat isi dari package yang sedang berjalan, lalu mencari class-class dengan anotasi `@Repository`, `@Service`, `@Controller`, atau `@Component`, dan selanjutnya melakukan inisiasi terhadap class-class tersebut dan menginjeksi semua dependencies-nya.
 
-#### 3. Cobalah untuk menambahkan sebuah Bioskop dengan mengakses link berikut: http://localhost:8080/bioskop/add?idBioskop=1&namaBioskop=Bioskop%20PAPA%20 APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi.
+#### 3. Cobalah untuk menambahkan sebuah Bioskop dengan mengakses link berikut: `http://localhost:8080/bioskop/add?idBioskop=1&namaBioskop=Bioskop%20PAPA%20APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx` Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi.
 > Terjadi error karena pada controller kita telah menetapkan dan menentukan idBioskop, namaBioskop, alamat, noTelepon, dan jumlahStudio sebagai required parameter yang bernilai `true`. Sementara, pada link di atas tidak dicantumkan parameter jumlahStudio sehingga akan menimbulkan error. 
 
 #### 4. Jika Papa APAP ingin melihat Bioskop dengan nama Bioskop Maung, link apa yang harus diakses?
@@ -23,7 +60,7 @@ Pada tutorial kedua ini, saya tidak hanya menyalin code dari dokumen tutorial, t
 > - `http://localhost:8080/bioskop/view?idBioskop=2` (jika developer  sistem mengimplementasikan **RequestParam**, sesuaikan idBioskop sesuai dengan id yang ingin dicari)
 > - `http://localhost:8080/bioskop/view/id-bioskop/2` (jika pengembang sistem mengimplementasikan **PathVariable**, sesuaikan idBioskop sesuai dengan id yang ingin dicari))
 
-#### 5. Tambahkan 1 contoh Bioskop lainnya sesukamu. Lalu cobalah untuk mengakses http://localhost:8080/bioskop/viewall, apa yang akan ditampilkan? Sertakan juga bukti screenshotmu.
+#### 5. Tambahkan 1 contoh Bioskop lainnya sesukamu. Lalu cobalah untuk mengakses `http://localhost:8080/bioskop/viewall`, apa yang akan ditampilkan? Sertakan juga bukti screenshotmu.
 > Saya telah menambahkan bioskop dengan keterangan **id bioskop: 3, nama bioskop: Bioskop Mazaya, alamat : Cibubur, nomor telepon: 081215944753, jumlah studio : 7** menggunakan link: `http://localhost:8080/bioskop/add?idBioskop=3&namaBioskop=Bioskop%20Mazaya&alamat=Cibubur&noTelepon=081215944753&jumlahStudio=7`
 > Lalu saya mencoba untuk mengakses link `http://localhost:8080/bioskop/viewall` dan terdapat bioskop yang telah saya tambahkan beserta detailnya.
 > Berikut adalah bukti screenshot saya `https://ibb.co/v3xRVvt`
