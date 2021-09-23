@@ -11,7 +11,7 @@ Pada tutorial ketiga kali ini, saya telah mempelajari mengenai konsep MVC di Spr
 #### 1. Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model `@AllArgsConstructor`, `@NoArgsConstructor`, `@Setter`, `@Getter`, `@Entity`, `@Table`)!
 > - `@AllArgsConstructor`: anotasi ini bertujuan untuk men-generate seluruh arguments constructor yang ada di class. Secara default, generated constructor akan public.
 > - `@NoArgsConstructor` : anotasi ini bertujuan untuk men-generate default constructor tanpa parameter atau argumen untuk class.
-> `>@Getter` dan `@Setter` adalah anotasi Lombok yang digunakan untuk men-generate method Getter dan Setter untuk seluruh fields secara otomatis.
+> - `>@Getter` dan `@Setter` adalah anotasi Lombok yang digunakan untuk men-generate method Getter dan Setter untuk seluruh fields secara otomatis.
 > - `@Setter` : anotasi ini bertujuan untuk set ataupun update suatu nilai dari variabel yang ada.
 > - `@Getter` : anotasi ini betujuan untuk mengambil updated value dari suatu variabel.
 > - `@Entity` : anotasi JPA yang digunakan untuk menunjukkan bahwa annotated class adalah JPA entity class.
