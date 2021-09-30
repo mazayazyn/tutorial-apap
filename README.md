@@ -2,6 +2,27 @@
 ## Authors
 * **AISYAH INDONESIA MAZAYA ZAYN** - *1906399000* - *C*
 
+---
+## Tutorial 4
+### What I have learned today
+
+Pada tutorial kali keempat kali ini, saya telah mempelajari bagian **view** lebih dalam. Saya mencoba menggunakan kembali kode menggunakan fragment yang ternyata sangat membantu dan dapat mengingkatkan efisiensi program. Fragment juga memungkinkan saya untuk memecah halaman HTML menjadi bagian-bagian kecil dan bagian tersebut dapat digunakan oleh halaman HTML lain. Pengimplementasian Fragment pada tutorial kali ini adalah pada penggunaan navigation bar.
+
+### Pertanyaan
+#### 1. Jelaskan perbedaan th:include dan th:replace!
+> Fragmen adalah bagian kecil kode yang dapat disertakan di template lain. Ini adalah praktik umum dalam web development untuk membuat komponen kecil yang dapat digunakan kembali seperti header, footer, navigation menu, dan bagian lain dari situs web yang digunakan secara berulang ada beberapa page. Thymeleaf disertai dengan bagian-bagian dari halaman lain sebagai Fragmen dan terdapat pula atribut-atribut pada Thymeleaf yang dapat kita gunakan sesuai kebutuhan. Contohnya adalah `th:include` dan `th:replace`.
+> Atribut `th:replace` akan menghapus kemudian menggantikan tag host, lalu menambahkan fragmen yang ditentukan, termasuk tag fragmen itu sendiri. Jadi, `th:replace` akan **menggantikan** tag host-nya dengan fragmen.
+> Sementara, atribut `th:include` akan memasukkan fragmen yang ditentukan sebagai body pada tag host-nya, tetapi tag fragmen-nya tidak ikut disertakan atau dimasukkan. Jadi, `th:include` akan **menyertakan isi** dari fragmen ke dalam tag host-nya.
+
+#### 2. Jelaskan apa fungsi dari th:object!
+> Atribut Thymeleaf mendefinisikan prioritas numerik yang menetapkan urutan eksekusi pada tag. Fiturnya terdiri dari Fragment Inclustion, Fragment Iteration, Conditional Evaluation, Local Variable Definition, dan sebagainya. Local Variable Definition memiliki atribut, yaitu `th:object` dan `th:with`. `th:object` adalah atribut yang berguna untuk meng-handle form input dari user. `th:object` menyimpan command object, yaitu bentuk representasi dari objek yang berada pada backend. `th:object` digunakan untuk **menentukan objek model** yang akan digunakan untuk mengumpulkan data form.
+
+#### 3. Jelaskan perbedaan dari * dan $ pada saat penggunaan th:object! Kapan harus dipakai?
+> Pada Thymeleaf, `$` dinamakan dollar syntax dan `*` dinamakan asterisk syntax. Keduanya berfungsi untuk melakukan variable expression. Perbedaan dari dollar syntax dan asterisk syntax adalah asterisk syntax mengevaluasi ekspresi pada objek yang dipilih, bukan pada keseluruhan atribut atau variable maps. Sementara, dollar syntax akan mengevaluasi ekspresi pada keseluruhan atribut. Jadi, selama tidak ada objek yang dipilih, dollar syntax dan asterisk syntax akan melakukan hal yang persis sama.
+> Sumber: `https://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html`
+
+----------
+
 ## Tutorial 3
 ### What I have learned today
 

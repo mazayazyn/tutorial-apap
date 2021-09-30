@@ -1,7 +1,6 @@
 package apap.tutorial.cineplux.service;
 
 import apap.tutorial.cineplux.model.BioskopModel;
-import apap.tutorial.cineplux.model.PenjagaModel;
 import apap.tutorial.cineplux.repository.BioskopDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;

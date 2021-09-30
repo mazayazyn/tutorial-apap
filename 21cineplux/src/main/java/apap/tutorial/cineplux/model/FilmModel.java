@@ -13,7 +13,8 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter @Getter
+@Setter
+@Getter
 @Entity
 @Table(name = "film")
 public class FilmModel implements Serializable {
@@ -28,10 +29,16 @@ public class FilmModel implements Serializable {
     private String namaFilm;
 
     @NotNull
+    @Size(max = 50)
+    @Column(nullable = false)
+    private String deskripsiFilm;
+
+    @NotNull
     @Column(nullable = false)
     private Boolean isDisplaying;
 
     //Relasi dengan BioskopModel
     @ManyToMany(mappedBy = "listFilm")
     List<BioskopModel> listBioskop;
+
 }
