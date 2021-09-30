@@ -41,6 +41,33 @@
                             <button class="btn btn-primary" type="submit">Submit</button>
                             <a class="btn btn-primary" href="/">Home</a>
                         </form>
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Nama Film</th>
+                                <form method="POST">
+                                    <th><a type="submit" class="btn btn-warning" th:href="@{/bioskop/add/{totalOK}(totalOK = ${totalOK}+1)}">Tambah Row</a><br/></th>
+                                </form>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="i : ${#numbers.sequence(1, totalOK)}">
+                                <td><select id="inputState" class="form-control">
+                                    <option th:each="film, iterationStatus : ${listFilm}"
+                                            th:field="*{listFilm}"
+                                            th:value="${film.noFilm}"
+                                            th:text="${film.namaFilm}"></option>
+                                </select></td>
+                                <td>
+                                    <form method="POST">
+                                        <a type="submit" class="btn btn-danger" th:href="@{/bioskop/add/{totalOK}(totalOK = ${totalOK}-1)}">Hapus</a>
+                                    </form>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
                     </div>
                 </div>
             </div>
