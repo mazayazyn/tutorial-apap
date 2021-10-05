@@ -69,6 +69,9 @@ public class BioskopController {
     @GetMapping("bioskop/viewall")
     public String listBioskop(Model model) {
         List<BioskopModel> listBioskop = bioskopService.getBioskopList();
+        List<BioskopModel> bioskopList = bioskopService.getBioskopList();
+        int count = bioskopList.size();
+        model.addAttribute("count", count);
         model.addAttribute("totalOK", totalOK);
         model.addAttribute("listBioskop", listBioskop);
         return "viewall-bioskop";
