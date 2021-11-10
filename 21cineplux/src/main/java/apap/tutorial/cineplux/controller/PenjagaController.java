@@ -68,15 +68,15 @@ public class PenjagaController {
         return "update-penjaga";
     }
 
-    @GetMapping ("/penjaga/delete/{noPenjaga}")
-    public String deletePenjaga(
-            @PathVariable Long noPenjaga,
+    @PostMapping("/penjaga/delete")
+    public String detelePenjagaSubmit(
+            @ModelAttribute BioskopModel bioskop,
             Model model
     ) {
-        PenjagaModel penjagamodel = penjagaService.getPenjagaByNoPenjaga(noPenjaga);
-        model.addAttribute("noBioskop", penjagaService.getPenjagaByNoPenjaga(noPenjaga).getBioskop().getNoBioskop());
-        model.addAttribute("noPenjaga", noPenjaga);
-        penjagaService.deletePenjaga(penjagamodel);
+        model.addAttribute("noBioskop", bioskop.getNoBioskop());
+        for (PenjagaModel penjaga : bioskop.getListPenjaga()) {
+            penjagaService.deletePenjaga(penjaga);
+        }
         return "delete-penjaga";
     }
 }

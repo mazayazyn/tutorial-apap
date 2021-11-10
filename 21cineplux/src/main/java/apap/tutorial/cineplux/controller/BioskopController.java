@@ -2,13 +2,15 @@ package apap.tutorial.cineplux.controller;
 
 import apap.tutorial.cineplux.model.BioskopModel;
 import apap.tutorial.cineplux.model.PenjagaModel;
+import apap.tutorial.cineplux.model.FilmModel;
 import apap.tutorial.cineplux.service.BioskopService;
+import apap.tutorial.cineplux.service.FilmService;
+import apap.tutorial.cineplux.repository.FilmDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @Controller
@@ -17,9 +19,40 @@ public class BioskopController {
     @Autowired
     private BioskopService bioskopService;
 
+    @Qualifier("filmServiceImpl")
+    @Autowired
+    private FilmService filmService;
+
+    @Autowired
+    private FilmDB filmEmpat;
+
+    private int totalOK = 1;
+
+    private List<FilmModel> listBioskopDanFilm = null;
+
     @GetMapping("/bioskop/add")
     public String addBioskopForm(Model model) {
+        List<FilmModel> listFilm = filmEmpat.findAll();
+        model.addAttribute("totalOK", totalOK);
         model.addAttribute("bioskop", new BioskopModel());
+        model.addAttribute("listFilm", listFilm);
+        model.addAttribute("listBioskopFilm", listBioskopDanFilm);
+        return "form-add-bioskop";
+    }
+
+    @RequestMapping(value="/bioskop/add/{totalOK}", method = RequestMethod.GET)
+    public String addBioskopSubmitRows(
+            @PathVariable int totalOK,
+            Model model
+    ) {
+        List<FilmModel> listFilm = filmEmpat.findAll();
+        totalOK = totalOK;
+        if (totalOK < 1) {
+            totalOK = 1;
+        }
+        model.addAttribute("bioskop", new BioskopModel());
+        model.addAttribute("totalOK", totalOK);
+        model.addAttribute("listFilm", listFilm);
         return "form-add-bioskop";
     }
 
@@ -36,6 +69,7 @@ public class BioskopController {
     @GetMapping("bioskop/viewall")
     public String listBioskop(Model model) {
         List<BioskopModel> listBioskop = bioskopService.getBioskopList();
+        model.addAttribute("totalOK", totalOK);
         model.addAttribute("listBioskop", listBioskop);
         return "viewall-bioskop";
     }
@@ -47,10 +81,12 @@ public class BioskopController {
     ) {
         BioskopModel bioskop = bioskopService.getBioskopByNoBioskop(noBioskop);
         List<PenjagaModel> listPenjaga = bioskop.getListPenjaga();
+        List<FilmModel> listFilm = bioskop.getListFilm();
 
         model.addAttribute("bioskop", bioskop);
         model.addAttribute("listPenjaga", listPenjaga);
         model.addAttribute("sedangTutup", bioskopService.getSedangTutup(bioskop));
+        model.addAttribute("listFilm", listFilm);
 
         return "view-bioskop";
     }
