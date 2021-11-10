@@ -2,7 +2,28 @@
 ## Authors
 * **AISYAH INDONESIA MAZAYA ZAYN** - *1906399000* - *C*
 
----
+----------
+## Tutorial 5
+### What I have learned today
+
+Pada tutorial kali ini, saya telah mempelajari apa sajaperbedaan web service dengan API. Lalu, saya juga mempelajari mengenai langkah-langkah membuat web service untuk mengakses suatu data. Tidak hanya itu, materi tutorial minggu ini juga mencakup pengoperasian aplikasi Postman dan penggunaan mock server untuk. Hal-hal yang saya pelajari selebihnya sudah saya rangkum pada jawaban di bawah. Pemahaman yang saya dapatkan ini saya rangkum pada jawaban dari pertanyaan-pertanyaan di bawah ini.
+
+### Pertanyaan
+#### 1. Apa itu Postman? Apa kegunaannya?
+> Postman adalah sebuah **API** (Application Programming Interface) **development tool** yang menyediakan simple user-friendly interface untuk menguji (test) web services. Kegunaan Postman adalah untuk membuat, menguji, membagikan, mendokumentasikan, dan memodifikasi API. Pada Postman terdapat fitur-fitur, seperti Environment, Mock Server, Collections, dan lainnya.
+
+#### 2. Jelaskan fungsi dari anotasi @JsonIgnoreProperties dan @JsonProperty!
+>  `@JsonIgnoreProperties` digunakan untuk menamai (mark) properti yang akan telah diabaikan. Sementara,  `@JsonProperty` digunakan untuk memetakan nama properti saat proses serialisasi dan deserialisasi sedang berlangsung.
+> Anotasi `@JsonIgnoreProperties` berfungsi untuk menghiraukan serialisasi properti (selama serialisasi) ataupun mengabaikan pemrosesan pembacaan properti JSON (selama deserialisasi). Sementara itu, `@JsonProperty` berfungsi untuk memetakan nama properti dengan JSON keys selama serialisasi dan deserialisasi. Ketika kita mengatur data JSON ke Objek Java, itu disebut deserialisasi JSON dan ketika kita mendapatkan data JSON dari Objek Java, itu disebut serialisasi JSON. `@JsonProperty` dapat mengubah logic property visibility dengan menggunakan elemen aksesnya selama serialisasi dan deserialisasi JSON.
+
+#### 3. Apa kegunaan atribut WebClient?
+> Spring Framework telah menyediakan `WebClient`, yaitu suatu interface sebagai access point utama dari HTTP requests. `WebClient` berguna untuk menginstansiasi URL access point dan mengatur request dan response dari suatu URL. Selanjutnya, `WebClient` juga menyediakan metode umum yang digunakan untuk mengirim atau menerima data dari local, intranet, ataupun Internet apa pun yang diidentifikasi oleh URI. Selain itu, `WebClient` juga menggunakan class WebRequest untuk menyediakan akses ke resources dan menangani respons yang dikembalikan dari server
+
+#### 4. Apa itu ResponseEntity dan BindingResult? Apa kegunaannya?
+> `ResponseEntity` merupakan objek representasi dari keseluruhan HTTP response, termasuk headers, body, dan status code. Respons yang dimiliki ResponseEntity dapat berupa header, code status, dan lainnya. Sementara itu,`BindingResult` merupakan interface yang digunakan untuk menentukan bagaimana objek yang menyimpan hasil validasi harus menyimpan dan mengambil hasil validasi tersebut (errors, attempt to bind to disallowed fields, dan lainnya) dengan cara diletakkan setelah parameter objek validasi.
+
+----------
+
 ## Tutorial 4
 ### What I have learned today
 

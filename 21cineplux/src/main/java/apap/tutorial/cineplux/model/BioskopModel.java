@@ -52,6 +52,7 @@ public class BioskopModel implements Serializable {
     @OneToMany(mappedBy = "bioskop", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<PenjagaModel> listPenjaga;
 
+
     //Relasi dengan FilmModel
     @ManyToMany
     @JoinTable(
