@@ -8,9 +8,9 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 
 public interface PenjagaRestService {
-    List<PenjagaModel> retrieveListPenjaga();
     PenjagaModel createPenjaga(PenjagaModel penjaga);
+    List<PenjagaModel> retrieveListPenjaga();
     PenjagaModel getPenjagaByNoPenjaga(Long noPenjaga);
-    void deletePenjaga(Long noPenjaga);
     PenjagaModel updatePenjaga(Long noPenjaga, PenjagaModel penjagaUpdate);
+    void deletePenjaga(Long noPenjaga);
 }

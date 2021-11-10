@@ -91,6 +91,6 @@ public class BioskopRestServiceImpl implements BioskopRestService {
                 .syncBody(data)
                 .retrieve()
                 .bodyToMono(BioskopDetail.class);
-
     }
+
 }

@@ -4,10 +4,19 @@ import apap.tutorial.cineplux.model.BioskopModel;
 import apap.tutorial.cineplux.model.PenjagaModel;
 import apap.tutorial.cineplux.repository.PenjagaDB;
 import apap.tutorial.cineplux.rest.PenjagaDetail;
+import apap.tutorial.cineplux.rest.Setting;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.transaction.Transactional;
+import java.io.IOException;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -16,6 +25,9 @@ import java.util.Optional;
 @Service
 @Transactional
 public class PenjagaRestServiceImpl implements PenjagaRestService{
+
+//    private final WebClient webClient;
+
     @Autowired
     private PenjagaDB penjagaDB;
 
