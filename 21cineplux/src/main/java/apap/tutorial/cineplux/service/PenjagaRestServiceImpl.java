@@ -78,7 +78,7 @@ public class PenjagaRestServiceImpl implements PenjagaRestService{
                 listpenjaga.add(element);
             }
         }
-        return penjagaDB.findAll();
+        return listpenjaga;
     }
 
 }
