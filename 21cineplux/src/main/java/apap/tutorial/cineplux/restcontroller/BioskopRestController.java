@@ -42,7 +42,7 @@ public class BioskopRestController {
             return bioskopRestService.getBioskopByNoBioskop(noBioskop);
         } catch (NoSuchElementException e) {
             throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "No Bioskop " + String.valueOf(noBioskop) + " Not Found,"
+                    HttpStatus.NOT_FOUND, "No Bioskop " + String.valueOf(noBioskop) + " Not Found,"
             );
         }
     }
@@ -69,7 +69,7 @@ public class BioskopRestController {
             return bioskopRestService.updateBioskop(noBioskop, bioskop);
         } catch (NoSuchElementException e) {
             throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Bioskop with No Bioskop " + String.valueOf(noBioskop) + " Not Found."
+                    HttpStatus.NOT_FOUND, "Bioskop with No Bioskop " + String.valueOf(noBioskop) + " Not Found."
             );
         }
     }

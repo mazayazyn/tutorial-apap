@@ -134,6 +134,16 @@ public class PenjagaRestController {
             );
         }
     }
+
+    @GetMapping(value = "/penjaga/jenisKelamin/{jenisKelamin}")
+    private List<PenjagaModel> returnListByJenisKelamin(
+            @PathVariable("jenisKelamin") Integer jenisKelamin
+    ){
+        return penjagaRestService.getListPenjagaByJenisKelamin(jenisKelamin);
+    }
+
+
+
 }
 
 //            penjaga.setUmur(age1);

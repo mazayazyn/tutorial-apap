@@ -18,6 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -66,6 +67,18 @@ public class PenjagaRestServiceImpl implements PenjagaRestService{
         penjaga.setBioskop(penjagaUpdate.getBioskop());
         penjaga.setJenisKelamin(penjagaUpdate.getJenisKelamin());
         return penjagaDB.save(penjaga);
+    }
+
+    @Override
+    public List<PenjagaModel> getListPenjagaByJenisKelamin(Integer jenisKelamin){
+        List<PenjagaModel> listpenjaga = new ArrayList<>();
+        List<PenjagaModel> listbiasa = penjagaDB.findAll();
+        for (PenjagaModel element : listbiasa){
+            if(element.getJenisKelamin() == jenisKelamin){
+                listpenjaga.add(element);
+            }
+        }
+        return penjagaDB.findAll();
     }
 
 }
