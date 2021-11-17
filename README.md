@@ -3,6 +3,31 @@
 * **AISYAH INDONESIA MAZAYA ZAYN** - *1906399000* - *C*
 
 ----------
+
+## Tutorial 6
+### What I have learned today
+
+Pada tutorial kali ini, saya telah mempelajari topik Web Security dimana saya menggunakan dependency baru, Spring Boot Starter Security, untuk mengimplementasikan otentikasi dan otorisasi pada functions yang telah di buat pada tutorial-tutorial sebelumnya. Pemahaman yang saya dapatkan pada materi minggu ini saya rangkum pada jawaban dari pertanyaan-pertanyaan di bawah ini.
+
+### Pertanyaan
+#### 1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode yang telah anda buat) konsep tersebut diimplementasi?
+> Otentikasi adalah verifikasi apakah seseorang itu adalah orang yang berhak untuk melakukan suatu action pafa sistem. Jadi, otentikasi akan mengecek username dan password yang di-input oleh pengguna apakah valid atau tidak valid di dalam users / credentials storage. Otentikasi bertujuan untuk memverifikasi bahwa pengguna mempunyai akses untuk masuk ke dalam suatu sistem. Pada tutorial keenam ini, kondep otentikasi diimplementasikan pada class `WebSecurityConfig` bagian `.anyRequest().authenticated()` dan method `configAuthentication`.
+> Sedangkan, otorisasi merupakan aturan yang digunakan untuk mengecek fungsi ataupun fitur apa saja yang dapat diakses oleh user berdasarkan role atau perannya. Dalam menjalankan otorisasi, pengguna harus telah berhasil melakukan uji otentikasi terlebih dahulu untuk dapat diuji otorisasinya. Pada kode saya, konsep otorisasi dibuat dan diimplementasikan pada class `UserDetailsServiceImpl` dan `WebSecurityConfig` bagian `.antMatchers("/penjaga/add/**").hasAnyAuthority("MANAGER")`.
+
+#### 2. Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerja dan tujuannya.
+> Spring Security menyediakan `BCryptPasswordEncoder` yang bertujuan untuk encode password. `BCryptPasswordEncoder` menggunakan algoritma dengan fungsi hashing BCript yang kuat.  Fungsi hashing yang dimaksud adalah sebuah fungsi yang digunakan untuk mengacak sebuah kata menjadi kata lain yang tidak bermakna dan sebisa mungkin kata hasil hashing tersebut tidak bisa ditebak dari kata apa kata tersebut berasal. Cara kerja secara singkat dari `BCryptPasswordEncoder` adalah ketika penginisiasian user baru, dibuatlah username dan password user tersebut --> Credentials user baru disimpan dan password dienkripsi menggunakan `BCryptPasswordEncoder` --> pada database tersimpan password yang telah dienkripsi secara otomatis. Tujuan lain dari `BCryptPasswordEncoder` adalah menambahkan strength dalam melakukan hashing password.
+
+#### 3. Apakah penyimpanan password sebaiknya menggunakan encryption atau hashing? Mengapa demikian?
+> Menurut saya, penyimpanan password alangkah lebih baiknya apabila menggunakan hashing dibanding `encryption` karena `hashing` merupakan fungsi satu arah yang melakukan perubahan untuk suatu string dengan menggunakan algoritma hash. Hal tersebut mengakibatkan sangat sedikit kemungkinannya atau bahkan  mustahil untuk dapat me-return string awal yang sudah melalui proses `hashing`. Sementara itu, `encryption` adalah cara mengacak data sehingga hanya pihak yang berwenang yang dapat memahami informasi tersebut. Hal ini menjadikan hashing lebih aman dan lebih baik digunakan untuk penyimpanan password agar kemungkinan terjadinya pencurian password dapat diminimalisir.
+
+#### 4. Jelaskan secara singkat apa itu UUID beserta penggunaannya!
+> UUID merupakan singkatan dari Universally Unique Identifier dimana merepresentasikan suatu nilai `Long 128-bit` yang bersifat unique yang di-generate secara acak oleh sistem. Dalam waktu 1 detik pun, jika di-generate 1000 UUID, kecil kemungkinan ada UUID yang sama sehingga lebih cocok untuk digunakan sebagai Primary Key. Secara standard, representasi UUID menggunakan digit hex. Contoh UUID (tanpa strip) adalah 00b245066523042a3bf4698f30617f0e. UUID bertujuan untuk mengidentifikasi informasi yang harus bersifat unik dalam suatu sistem sehingga UUID memiliki diulang associative keys dalam database dan pengenal untuk hardware fisik. Apabila `BCryptPasswordEncoder` mengenkripsi password, maka UUID mengenkripsi id. Jadi, saat user baru dibuat oleh sistem, user tersebut akan diberikan id yang bersifat unik yang dapat dilihat pada database. Pengimplementasian dan penggunaan UUID pada tutorial 6 ini terdapat pada id user dalam UserModel.
+
+#### 5. Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut?
+> Class `UserDetailsServiceImpl` merupakan class yang bertujuan untuk memuat user's credentials, yaitu username, password, role, yang berguna dalam proses otorisasi. Class `UserDetailsServiceImpl` merupakan salah satu pengimplementasian konsep otorisasi dengan menentukan hak-hak yang dimiliki oleh user. Fungsi pada class ini tidak di-provide oleh class `UserRoleServiceImpl` sehingg keberadaan Class `UserServiceImpl` sangat penting. Fakta menariknya, Class `UserServiceImpl` hanya berfungsi untuk menambahkan user, enkripsi password, mengambil user, dan memperbarui password sehingga class ini tidak bertujuan untuk  mengelola otorisasi user.
+
+----------
+
 ## Tutorial 5
 ### What I have learned today
 
@@ -142,4 +167,3 @@ Sejauh ini belum ada materi terkait APAP yang saya belum mengerti. Namun, pertan
     - Karena asdos menggunakan Intellij IDEA untuk panduan dokumen lab sehingga akan lebih mudah dan efektif apabila kita menggunakan software yang sama. Selain itu, Intellij IDEA bisa membuat auto generate constructor, setter, getter, dan berbagai macam import sehingga kita bisa lebih cepat dalam membuat code.
 - [X] Apa perbedaan penggunaan Springboot untuk APAP dan DDP2? Mengapa penggunaan SpringBoot untuk APAP lebih rumit dan kompleks?
     - Sebetulnya sama saja, mungkin APAP terlihat lebih kompleks karena saya sudah tidak pernah mengasah programming dengan Springboot lagi sehingga ada beberapa hal yang harus dipelajari kembali.
-

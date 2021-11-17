@@ -36,8 +36,7 @@ public class PenjagaModel implements Serializable {
     @Column(nullable = false)
     private Integer jenisKelamin;
 
-    @NotNull
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String umur;
 
     //Relasi dengan BioskopModel

@@ -9,51 +9,63 @@
               integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     </head>
 
-    <body>
-    <nav th:replace="fragments/fragment :: navbar"></nav>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<div class="container">
+    <br>
     <h2>Daftar Seluruh Bioskop</h2>
-        <table class = "table">
-            <thead>
-            <tr>
-                <th>Nomor Bioskop</th>
-                <th>Nama Bioskop</th>
-                <th>Alamat Bioskop</th>
-                <th>Jumlah Studio Bioskop</th>
-                <th>Waktu Buka Bioskop</th>
-                <th>Waktu Tutup Bioskop</th>
-                <th>Detail</th>
-                <th>Update</th>
-                <th>Delete</th>
-            </tr>
-            </thead>
-            <tbody>
-                <tr th:each="bioskop, iterationStatus : ${listBioskop}"
-                    th:style="${iterationStatus.even} ? 'font-weight: bold;'">
-                    <td th:text="${bioskop.noBioskop}"></td>
-                    <td th:text="${bioskop.namaBioskop}"></td>
-                    <td th:text="${bioskop.alamatBioskop}"></td>
-                    <td th:text="${bioskop.jumlahStudio}"></td>
-                    <td th:text="${bioskop.waktuBuka}"></td>
-                    <td th:text="${bioskop.waktuTutup}"></td>
-                    <div>
-                        <td>
-                            <a class="btn btn-primary" th:href="@{/bioskop/view(noBioskop=${bioskop.noBioskop})}">Detail
-                                Bioskop</a>
-                        </td>
-                    </div>
-                    <div>
-                        <td>
-                            <a class="btn btn-primary" th:href="@{/bioskop/update/} + ${bioskop.noBioskop}">Update Bioskop</a>
-                        </td>
-                    </div>
-                    <div>
-                        <td>
-                            <a class="btn btn-primary" th:href="@{/bioskop/delete/} + ${bioskop.noBioskop}">Delete
-                                Bioskop</a>
-                        </td>
-                    </div>
-                </tr>
-            </tbody>
-        </table>
-    </body>
+    <br>
+    <table class = "table">
+        <thead>
+        <tr>
+            <th>Nomor Bioskop</th>
+            <th>Nama Bioskop</th>
+            <th>Alamat Bioskop</th>
+            <th>Jumlah Studio Bioskop</th>
+            <th>Waktu Buka Bioskop</th>
+            <th>Waktu Tutup Bioskop</th>
+            <th>Detail</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="bioskop, iterationStatus : ${listBioskop}"
+            th:style="${iterationStatus.even} ? 'font-weight: bold;'">
+            <td th:text="${bioskop.noBioskop}"></td>
+            <td th:text="${bioskop.namaBioskop}"></td>
+            <td th:text="${bioskop.alamatBioskop}"></td>
+            <td th:text="${bioskop.jumlahStudio}"></td>
+            <td th:text="${bioskop.waktuBuka}"></td>
+            <td th:text="${bioskop.waktuTutup}"></td>
+            <div>
+                <td>
+                    <a class="btn btn-primary" th:href="@{/bioskop/view(noBioskop=${bioskop.noBioskop})}">Detail
+                        Bioskop</a>
+                </td>
+            </div>
+            <div>
+                <td>
+                    <a class="btn btn-primary" th:href="@{/bioskop/update/} + ${bioskop.noBioskop}">Update Bioskop</a>
+                </td>
+            </div>
+            <div>
+                <td>
+                    <a class="btn btn-primary" th:href="@{/bioskop/delete/} + ${bioskop.noBioskop}">Delete
+                        Bioskop</a>
+                </td>
+            </div>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="/">Home</a>
+</div>
+
+</body>
+
 </html>
+
+
+
+
+
