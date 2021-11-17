@@ -1,7 +1,5 @@
 package apap.tutorial.cineplux.controller;
 
-import apap.tutorial.cineplux.model.BioskopModel;
-import apap.tutorial.cineplux.model.PenjagaModel;
 import apap.tutorial.cineplux.model.RoleModel;
 import apap.tutorial.cineplux.model.UserModel;
 import apap.tutorial.cineplux.service.RoleService;
@@ -47,7 +45,7 @@ public class UserController {
         // Mendapatkan semua UserModel
         List<UserModel> listUser = userService.getListUser();
 
-        // Add variabel semua UserModel ke 'listUser' untuk dirender pada thymeleaf
+        // Add variabel semua UserModel ke 'listUser' untuk di-render pada thymeleaf
         model.addAttribute("listUser", listUser);
 
         // Return view template yang ingin digunakan
@@ -77,21 +75,27 @@ public class UserController {
         Principal principal = request.getUserPrincipal();
         UserModel user = userService.getUser(principal.getName());
 
+        // Jika New Password dan Confirm Password tidak cocok
         if (!newPassword.equals(confirmNewPassword)) {
-            model.addAttribute("failed_notif", "Password dan username tidak cocok. Silakan coba input lagi.");
+            model.addAttribute("failed_notif", "New Password dan Confirm Password tidak cocok. Silakan coba input lagi.");
             return "update-password";
         }
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         if (passwordEncoder.matches(oldPassword, user.getPassword())) {
             boolean passwordboolean = userService.passwordCheck(newPassword);
+            // Jika Old Password sudah sesuai, New Password memenuhi ketentuan, dan New Password & Confirm Password cocok
             if(passwordboolean == true){
                 userService.updatePassword(user, newPassword);
                 model.addAttribute("success_notif", "Password berhasil diubah");
-            } else if(passwordboolean == false){
+            }
+            // Jika New Password tidak memenuhi ketentuan (minimal 8 angka, ada huruf besar, dan huruf kecil)
+            else if(passwordboolean == false){
                 model.addAttribute("failed_notif", "Password tidak valid");
             }
-        } else {
+        }
+        // Jika password lama tidak cocok
+        else {
             model.addAttribute("failed_notif", "Password lama tidak sesuai. Mohon input ulang.");
             return "update-password";
         }

@@ -51,13 +51,30 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean passwordCheck(String password) {
+        // Mengecek apakah panjang password sama atau lebih dari 8 karakter
         boolean total = password.length() >= 8;
-        boolean alphabet = false;
+        boolean hurufbesar = false;
+        boolean hurufkecil = false;
         boolean number = false;
+        boolean simbol = false;
         for (char element : password.toCharArray()) {
-            if (Character.isAlphabetic(element)){ alphabet = true; }
-            if (Character.isDigit(element)){ number = true; }
+            // Mengecek apakah terdapat huruf besar pada password baru
+            if (Character.isAlphabetic(element) && Character.isUpperCase(element)){
+                hurufbesar = true;
+            }
+            // Mengecek apakah terdapat huruf kecil pada password baru
+            if (Character.isAlphabetic(element) && Character.isLowerCase(element)){
+                hurufkecil = true;
+            }
+            // Mengecek apakah terdapat elemen angka pada password baru
+            if (Character.isDigit(element)){
+                number = true;
+            }
+            // Mengecek apakah terdapat simbol pada password baru
+            if (!Character.isAlphabetic(element) && !Character.isDigit(element)){
+                simbol = true;
+            }
         }
-        return total && alphabet && number;
+        return total && hurufbesar && hurufkecil && number && simbol;
     }
 }
