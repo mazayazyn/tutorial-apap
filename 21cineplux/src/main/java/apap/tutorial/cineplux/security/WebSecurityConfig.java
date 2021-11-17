@@ -24,6 +24,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/user/viewall").hasAuthority("ADMIN")
                 .antMatchers("/user/add").hasAuthority("ADMIN")
                 .antMatchers("/penjaga/add/**").hasAuthority("MANAGER")
+                .antMatchers("/penjaga/update/**").hasAuthority("MANAGER")
+                .antMatchers("/penjaga/delete/**").hasAuthority("MANAGER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
