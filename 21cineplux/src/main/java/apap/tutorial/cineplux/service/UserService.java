@@ -12,4 +12,5 @@ public interface UserService {
     void deleteUser(UserModel user);
     void updatePassword(UserModel user, String password);
     boolean passwordCheck(String password);
+    boolean checkEmail(String check);
 }

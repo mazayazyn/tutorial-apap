@@ -3,6 +3,7 @@ package apap.tutorial.cineplux.service;
 import apap.tutorial.cineplux.model.UserModel;
 import apap.tutorial.cineplux.repository.UserDb;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +36,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserModel getUser(String username) { return userDb.findByUsername(username); }
+    public UserModel getUser(String username) {
+        return userDb.findByUsername(username);
+    }
 
     @Override
     public void deleteUser(UserModel user) {
@@ -59,22 +62,33 @@ public class UserServiceImpl implements UserService {
         boolean simbol = false;
         for (char element : password.toCharArray()) {
             // Mengecek apakah terdapat huruf besar pada password baru
-            if (Character.isAlphabetic(element) && Character.isUpperCase(element)){
+            if (Character.isAlphabetic(element) && Character.isUpperCase(element)) {
                 hurufbesar = true;
             }
             // Mengecek apakah terdapat huruf kecil pada password baru
-            if (Character.isAlphabetic(element) && Character.isLowerCase(element)){
+            if (Character.isAlphabetic(element) && Character.isLowerCase(element)) {
                 hurufkecil = true;
             }
             // Mengecek apakah terdapat elemen angka pada password baru
-            if (Character.isDigit(element)){
+            if (Character.isDigit(element)) {
                 number = true;
             }
             // Mengecek apakah terdapat simbol pada password baru
-            if (!Character.isAlphabetic(element) && !Character.isDigit(element)){
+            if (!Character.isAlphabetic(element) && !Character.isDigit(element)) {
                 simbol = true;
             }
         }
         return total && hurufbesar && hurufkecil && number && simbol;
+    }
+
+    @Override
+    public boolean checkEmail(String email) {
+        List<UserModel> listEmail = userDb.findAll();
+        for (UserModel i : listEmail) {
+            if (i.getEmail().equals(email)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
