@@ -20,11 +20,11 @@ Pada tutorial kali ini, saya tidak menggunakan Thymeleaf kembali dan beralih kep
 >- **[Line 94 Source Code handleRemoveItemFromCart]** Lakukan set untuk balance
 >- **[Line 95 Source Code handleRemoveItemFromCart]** Panggil method updateShopItem dengan parameter newItem dan false
 >- **[Line 97 Source Code handleRemoveItemFromCart]** Set state-nya menggunakan variabel newItems
->- Berikut adalah source code keseluruhan untuk method handleRemoveItemFromCart: https://ibb.co/9sn57KZ
+>- Berikut adalah source code keseluruhan untuk method handleRemoveItemFromCart ![alt text](https://ibb.co/9sn57KZ)
 ##### Latihan Nomor 2
 >- Secara umum, saya melakukan modifikasi pada handleAddItemToCart dan handleRemoveItemFromCart
 >- **[Line 94 Source Code handleRemoveItemFromCart]** Update variabel balance menjadi nilai balance saat itu ditambah dengan harga suatu item. Jadi, artinya apabila kita mengeluarkan item dari cart, maka saldo akan bertambah.
->- Berikut adalah source code keseluruhan untuk method handleAddItemToCart: https://ibb.co/bP7Bvz6
+>- Berikut adalah source code keseluruhan untuk method handleAddItemToCart ![alt text](https://ibb.co/bP7Bvz6)
 >- **[Line 65, 55, 57, 69, 70  Source Code handleAddItemToCart]** Insialisasi variabel-variabel yang akan digunakan pada method handleRemoveItemFromCart
 >- **[Line 79 Source Code handleAddItemToCart]** Update variabel balance menjadi nilai balance saat itu dikurangi dengan harga suatu item. Jadi, artinya apabila kita menambahkan item ke cart, maka saldo akan berkurang.
 >- **[Line 75 Source Code handleAddItemToCart]** Membuat else-if confition dengan nilai variabel targetInd lebih kecil dari 0
