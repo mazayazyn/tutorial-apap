@@ -15,7 +15,7 @@ Pada tutorial kali ini, saya tidak menggunakan Thymeleaf kembali dan beralih kep
 >- Saya membuat method bernama handleRemoveItemFromCart pada file index.js di folder src/views/Home/index.js.
 >- **[Line 87, 88, 89 Source Code handleRemoveItemFromCart]** Insialisasi variabel-variabel yang akan digunakan pada method handleRemoveItemFromCart
 >- **[Line 90 Source Code handleRemoveItemFromCart]** Membuat if confition dengan nilai variabel targetInd lebih besar atau sama dengan 0
->- **[Line 91 Source Code handleRemoveItemFromCart]** Set newItem.inCart menjafi false
+>- **[Line 91 Source Code handleRemoveItemFromCart]** Set newItem.inCart menjadi false
 >- **[Line 92 Source Code handleRemoveItemFromCart]** Gunakan method splice untuk newItems dengan parameter targetInd dan 1
 >- **[Line 94 Source Code handleRemoveItemFromCart]** Lakukan set untuk balance
 >- **[Line 95 Source Code handleRemoveItemFromCart]** Panggil method updateShopItem dengan parameter newItem dan false
