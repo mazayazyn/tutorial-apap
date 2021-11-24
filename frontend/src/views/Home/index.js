@@ -20,10 +20,10 @@ export default class Home extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid">
-                <h1 className="text-center mt-3 mb-0">Mini Commerce</h1>
-                <div style={{ position: "fixed", top: 25, right: 25}}>
-                    <Fab variant="extend" onClick={this.handleToggle}>
+            <div className = "container-fluid">
+                <h1 className = "text-center mt-3 mb-0"> Mini Commerce </h1>
+                <div style = {{ position: "fixed", top: 25, right: 25}}>
+                    <Fab variant = "extend" onClick = {this.handleToggle}>
                         {this.state.cartHidden ?
                             <Badge color="secondary" badgeContent={this.state.cartItems.length}>
                                 <ShoppingCartIcon />
@@ -34,24 +34,24 @@ export default class Home extends React.Component {
                 <p className="text-center text-secondary text-sm font-italic">
                     (this is a <strong>class-based</strong> application)
                 </p>
-                <p className="text-center text-primary">Your Balance: <b> {this.state.balance}</b> </p>
+                <p className="text-center text-primary">Your Balance: <b> {this.state.balance} </b></p>
                 <div className="container pt-3">
-                    <div className="row mt-3">
+                    <div className = "row mt-3">
                         {!this.state.cartHidden ? (
                             <div className="col-sm">
                                 <List
-                                    title="My Cart"
-                                    items={this.state.cartItems}
-                                    onItemClick={this.handleRemoveItemFromCart}
-                                    isShopList={false}
+                                    title = "My Cart"
+                                    items = {this.state.cartItems}
+                                    onItemClick = {this.handleRemoveItemFromCart}
+                                    isShopList = {false}
                                 ></List>
                             </div>
                         ) : <div className="col-sm">
                             <List
-                                title="List Items"
-                                items={this.state.shopItems}
-                                onItemClick={this.handleAddItemToCart}
-                                isShopList={true}
+                                title = "List Items"
+                                items = {this.state.shopItems}
+                                onItemClick = {this.handleAddItemToCart}
+                                isShopList = {true}
                             ></List>
                         </div>}
                     </div>
@@ -60,23 +60,29 @@ export default class Home extends React.Component {
         );
     }
 
+    //Handling untuk Operasi Tambah Item ke Cart
     handleAddItemToCart = (item) => {
         const newItems = [...this.state.cartItems];
         const newItem = { ...item };
         const targetInd = newItems.findIndex((it) => it.id === newItem.id);
+        // Inisialisasi variabel balance
         const balance = this.state.balance;
         var newBalance = balance;
+        // Apabila saldo lebih kecil dibandingkan dengan harga item
         if (balance < newItem.price) {
-            window.alert("Balance not sufficient")
-        } else if (targetInd < 0) {
+            window.alert("Balance not sufficient!")
+        } 
+        else if (targetInd < 0) {
             newItem.inCart = true;
             newItems.push(newItem);
+            // Apabila item ditambahkan ke cart, maka saldo berkurang
             newBalance = balance - newItem.price;
             this.updateShopItem(newItem, true)
         }
         this.setState({ cartItems: newItems, balance: newBalance });
     };
 
+    //Handling untuk Operasi Hapus Item dari Cart
     handleRemoveItemFromCart = (item) => {
         const newItems = [...this.state.cartItems];
         const newItem = { ...item };
@@ -84,6 +90,7 @@ export default class Home extends React.Component {
         if (targetInd > 0 || targetInd === 0) {
             newItem.inCart = false;
             newItems.splice(targetInd,1);
+            // Apabila item dihapus dari cart, maka saldo bertambah
             this.setState( {balance: this.state.balance + newItem.price});
             this.updateShopItem(newItem, false)
         }
