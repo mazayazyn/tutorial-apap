@@ -2,7 +2,74 @@
 ## Authors
 * **AISYAH INDONESIA MAZAYA ZAYN** - *1906399000* - *C*
 
+---------
+
+## Tutorial 7
+### What I have learned today
+
+Pada tutorial kali ini, saya tidak menggunakan Thymeleaf kembali dan beralih kepada modern web development, khusunya kepada bagian front-end terlebih dahulu. Berkat tutorial 7 ini, saya lebih mengetahui mengenai React JS dan JavaScript. Adapun hal-hal lain yang saya pelajari, saya rangkum pada jawaban di bawah ini.
+
+### Pertanyaan
+#### 1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot sebagai ilustrasi dari apa yang Anda jelaskan.
+- `Latihan no. 1` (Buatlah sehingga ketika button delete diklik, item akan terhapus dari My Cart dan tombol keranjang pada item tersebut di halaman
+List Item akan muncul kembali.)
+![alt text](https://...jpg)
+
+- `Latihan no. 2` (Buatlah sehingga balance berkurang sesuai dengan harga item saat memasukkan item ke dalam keranjang belanja. Jika item dihapus dari My Cart, maka saldo bertambah kembali sesuai dengan harga item.)
+![alt text](https://...jpg)
+
+- `Latihan no. 3` (Jika balance kurang, maka tambahkan alert bahwa balance tidak cukup.)
+![alt text](https://...jpg)
+
+#### 2. Menurut pemahaman kamu selama pengerjaan tutorial ini, apa perbedaan antara state dan props?
+> State adalah sebuah data yang bersifat private dari suatu component. Jadi, state hanya tersedia untuk component tersebut dan tidak bisa di akses dari component lain. Suatu component dapat melakukan perubahan terhadap state-nya sendiri sehingga state akan selalu berubah-ubah. Pada tutorial 7 kali ini, **cartItems** merupakan sebuah state. Pada list items yang akan dimasukkan ke keranjang, cartItems dapat ditambahkan dan dihapus sesuai props item yang di klik. Sementara itu, props adalah singkatan dari property yang mirip seperti atribut-atribut pada tag HTML. Dalam functional component, props adalah parameternya, tetapi jika component-nya berbentuk class, props adalah property dari class yang dapat diakses melalui keyword ‘this’. Pada tutorial kali ini, contoh dari props yaitu **item** pada `handleAddItemToCart = (item)`. 
+> Referensi: https://www.dumetschool.com/
+
+#### 3. Menurut kamu, apakah sebaiknya kita menggunakan component (e.g. List, Item) dalam React? sebutkan alasannya.
+> Dengan menggunakan `components`, kode yang telah kita kembangkan dapat di-reuse atau digunakan kembali dimanapun kita membutuhkannya karena setiap components memiliki logikanya tersendiri dan mengontrol rendering-nya sendiri. Reuse kode membantu membuat aplikasi kita lebih mudah untuk dikembangkan dan dipelihara karena tidak saling ketergantungan. Tidak hanya itu, components juga dapat membantu kita dalam melakukan penerapan tampilan yang konsisten di seluruh project.
+> Referensi: https://www.telerik.com/
+
+#### 4. Apa perbedaan class component dan functional component?
+> Secara definisi, `class component` merupakan kelas sederhana yang terdiri dari beberapa fungsi untuk menambahkan fungsionalitas ke aplikasi. Sementara itu, `functional component` adalah komponen yang merupakan fungsi JavaScript. 
+> Untuk perbedaan yang lebih detail, saya lampirkan pada tabel di bawah:
+| Functional Component | Class Component | 
+| ---------------------| --------------- | 
+| Digunakan untuk merepresentasikan static data | Digunakan untuk dynamic sources dari data  | 
+| Tidak bisa menangani fetching data | Menangani setiap data yang mungkin berubah (fetching data, user events, etc.) | 
+| Code mudah untuk ditulis | Banyak code yang perlu ditulis | 
+> Referensi: Udemy Course
+
+#### 5. Dalam react, apakah perbedaan component dan element?
+> `Element` adalah objek biasa atau representasi virtual yang menjelaskan apa yang ingin kita tampilkan di screen dalam bentuk DOM nodes atau komponen lainnya. Elemen dapat berisi elemen lain dalam props. 
+> Secara sederhana, `component` dapat didefinisikan sebagai fungsi. Komponen bisa dideklarasikan pada beberapa cara, seperti menggunakan render() method. Fungsi komponen reaksi render() ini mengembalikan DOM Tree dari react elements di belakang layar. Ada beberapa pemetaan kompleks dan logika diff yang terlibat, tetapi pada dasarnya elemen React ini memetakan ke elemen DOM.
+> Referensi: https://reactjs.org
+
 ----------
+
+## Tutorial 6
+### What I have learned today
+
+Pada tutorial kali ini, saya telah mempelajari topik Web Security dimana saya menggunakan dependency baru, Spring Boot Starter Security, untuk mengimplementasikan otentikasi dan otorisasi pada functions yang telah di buat pada tutorial-tutorial sebelumnya. Pemahaman yang saya dapatkan pada materi minggu ini saya rangkum pada jawaban dari pertanyaan-pertanyaan di bawah ini.
+
+### Pertanyaan
+#### 1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode yang telah anda buat) konsep tersebut diimplementasi?
+> Otentikasi adalah verifikasi apakah seseorang itu adalah orang yang berhak untuk melakukan suatu action pafa sistem. Jadi, otentikasi akan mengecek username dan password yang di-input oleh pengguna apakah valid atau tidak valid di dalam users / credentials storage. Otentikasi bertujuan untuk memverifikasi bahwa pengguna mempunyai akses untuk masuk ke dalam suatu sistem. Pada tutorial keenam ini, kondep otentikasi diimplementasikan pada class `WebSecurityConfig` bagian `.anyRequest().authenticated()` dan method `configAuthentication`.
+> Sedangkan, otorisasi merupakan aturan yang digunakan untuk mengecek fungsi ataupun fitur apa saja yang dapat diakses oleh user berdasarkan role atau perannya. Dalam menjalankan otorisasi, pengguna harus telah berhasil melakukan uji otentikasi terlebih dahulu untuk dapat diuji otorisasinya. Pada kode saya, konsep otorisasi dibuat dan diimplementasikan pada class `UserDetailsServiceImpl` dan `WebSecurityConfig` bagian `.antMatchers("/penjaga/add/**").hasAnyAuthority("MANAGER")`.
+
+#### 2. Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerja dan tujuannya.
+> Spring Security menyediakan `BCryptPasswordEncoder` yang bertujuan untuk encode password. `BCryptPasswordEncoder` menggunakan algoritma dengan fungsi hashing BCript yang kuat.  Fungsi hashing yang dimaksud adalah sebuah fungsi yang digunakan untuk mengacak sebuah kata menjadi kata lain yang tidak bermakna dan sebisa mungkin kata hasil hashing tersebut tidak bisa ditebak dari kata apa kata tersebut berasal. Cara kerja secara singkat dari `BCryptPasswordEncoder` adalah ketika penginisiasian user baru, dibuatlah username dan password user tersebut --> Credentials user baru disimpan dan password dienkripsi menggunakan `BCryptPasswordEncoder` --> pada database tersimpan password yang telah dienkripsi secara otomatis. Tujuan lain dari `BCryptPasswordEncoder` adalah menambahkan strength dalam melakukan hashing password.
+
+#### 3. Apakah penyimpanan password sebaiknya menggunakan encryption atau hashing? Mengapa demikian?
+> Menurut saya, penyimpanan password alangkah lebih baiknya apabila menggunakan hashing dibanding `encryption` karena `hashing` merupakan fungsi satu arah yang melakukan perubahan untuk suatu string dengan menggunakan algoritma hash. Hal tersebut mengakibatkan sangat sedikit kemungkinannya atau bahkan  mustahil untuk dapat me-return string awal yang sudah melalui proses `hashing`. Sementara itu, `encryption` merupakan fungsi dua arah di mana ketika suatu string di-encode maka string tersebut dapat di-decode. Jadi dapat disimpulkan bahwa hashing lebih aman digunakan untuk penyimpanan password karena meminimalisir kemungkinan terjadinya pencurian password.
+
+#### 4. Jelaskan secara singkat apa itu UUID beserta penggunaannya!
+> UUID merupakan singkatan dari Universally Unique Identifier dimana merepresentasikan suatu nilai `Long 128-bit` yang bersifat unique yang di-generate secara acak oleh sistem. Dalam waktu 1 detik pun, jika di-generate 1000 UUID, kecil kemungkinan ada UUID yang sama sehingga lebih cocok untuk digunakan sebagai Primary Key. Secara standard, representasi UUID menggunakan digit hex. Contoh UUID (tanpa strip) adalah 00b245066523042a3bf4698f30617f0e. UUID bertujuan untuk mengidentifikasi informasi yang harus bersifat unik dalam suatu sistem sehingga UUID memiliki diulang associative keys dalam database dan pengenal untuk hardware fisik. Apabila `BCryptPasswordEncoder` mengenkripsi password, maka UUID mengenkripsi id. Jadi, saat user baru dibuat oleh sistem, user tersebut akan diberikan id yang bersifat unik yang dapat dilihat pada database. Pengimplementasian dan penggunaan UUID pada tutorial 6 ini terdapat pada id user dalam UserModel.
+
+#### 5. Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut?
+> Class `UserDetailsServiceImpl` merupakan class yang bertujuan untuk memuat user's credentials, yaitu username, password, role, yang berguna dalam proses otorisasi. Class `UserDetailsServiceImpl` merupakan salah satu pengimplementasian konsep otorisasi dengan menentukan hak-hak yang dimiliki oleh user. Fungsi pada class ini tidak di-provide oleh class `UserRoleServiceImpl` sehingg keberadaan Class `UserServiceImpl` sangat penting. Fakta menariknya, Class `UserServiceImpl` hanya berfungsi untuk menambahkan user, enkripsi password, mengambil user, dan memperbarui password sehingga class ini tidak bertujuan untuk  mengelola otorisasi user.
+
+----------
+
 ## Tutorial 5
 ### What I have learned today
 
@@ -142,4 +209,3 @@ Sejauh ini belum ada materi terkait APAP yang saya belum mengerti. Namun, pertan
     - Karena asdos menggunakan Intellij IDEA untuk panduan dokumen lab sehingga akan lebih mudah dan efektif apabila kita menggunakan software yang sama. Selain itu, Intellij IDEA bisa membuat auto generate constructor, setter, getter, dan berbagai macam import sehingga kita bisa lebih cepat dalam membuat code.
 - [X] Apa perbedaan penggunaan Springboot untuk APAP dan DDP2? Mengapa penggunaan SpringBoot untuk APAP lebih rumit dan kompleks?
     - Sebetulnya sama saja, mungkin APAP terlihat lebih kompleks karena saya sudah tidak pernah mengasah programming dengan Springboot lagi sehingga ada beberapa hal yang harus dipelajari kembali.
-
