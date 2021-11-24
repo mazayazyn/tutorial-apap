@@ -11,18 +11,34 @@ Pada tutorial kali ini, saya tidak menggunakan Thymeleaf kembali dan beralih kep
 
 ### Pertanyaan
 #### 1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot sebagai ilustrasi dari apa yang Anda jelaskan.
-- `Latihan no. 1` (Buatlah sehingga ketika button delete diklik, item akan terhapus dari My Cart dan tombol keranjang pada item tersebut di halaman
-List Item akan muncul kembali.)
-![alt text](https://...jpg)
-
-- `Latihan no. 2` (Buatlah sehingga balance berkurang sesuai dengan harga item saat memasukkan item ke dalam keranjang belanja. Jika item dihapus dari My Cart, maka saldo bertambah kembali sesuai dengan harga item.)
-![alt text](https://...jpg)
-
-- `Latihan no. 3` (Jika balance kurang, maka tambahkan alert bahwa balance tidak cukup.)
-![alt text](https://...jpg)
+##### Latihan Nomor 1
+>- Saya membuat method bernama handleRemoveItemFromCart pada file index.js di folder src/views/Home/index.js.
+>- **[Line 87, 88, 89 Source Code handleRemoveItemFromCart]** Insialisasi variabel-variabel yang akan digunakan pada method handleRemoveItemFromCart
+>- **[Line 90 Source Code handleRemoveItemFromCart]** Membuat if confition dengan nilai variabel targetInd lebih besar atau sama dengan 0
+>- **[Line 91 Source Code handleRemoveItemFromCart]** Set newItem.inCart menjafi false
+>- **[Line 92 Source Code handleRemoveItemFromCart]** Gunakan method splice untuk newItems dengan parameter targetInd dan 1
+>- **[Line 94 Source Code handleRemoveItemFromCart]** Lakukan set untuk balance
+>- **[Line 95 Source Code handleRemoveItemFromCart]** Panggil method updateShopItem dengan parameter newItem dan false
+>- **[Line 97 Source Code handleRemoveItemFromCart]** Set state-nya menggunakan variabel newItems
+>- Berikut adalah source code keseluruhan untuk method handleRemoveItemFromCart ![alt text](https://ibb.co/9sn57KZ)
+##### Latihan Nomor 2
+>- Secara umum, saya melakukan modifikasi pada handleAddItemToCart dan handleRemoveItemFromCart
+>- **[Line 94 Source Code handleRemoveItemFromCart]** Update variabel balance menjadi nilai balance saat itu ditambah dengan harga suatu item. Jadi, artinya apabila kita mengeluarkan item dari cart, maka saldo akan bertambah.
+>- Berikut adalah source code keseluruhan untuk method handleAddItemToCart ![alt text](https://ibb.co/bP7Bvz6)
+>- **[Line 65, 55, 57, 69, 70  Source Code handleAddItemToCart]** Insialisasi variabel-variabel yang akan digunakan pada method handleRemoveItemFromCart
+>- **[Line 79 Source Code handleAddItemToCart]** Update variabel balance menjadi nilai balance saat itu dikurangi dengan harga suatu item. Jadi, artinya apabila kita menambahkan item ke cart, maka saldo akan berkurang.
+>- **[Line 75 Source Code handleAddItemToCart]** Membuat else-if confition dengan nilai variabel targetInd lebih kecil dari 0
+>- **[Line 76 Source Code handleAddItemToCart]** Set newItem.inCart menjafi true
+>- **[Line 77 Source Code handleAddItemToCart]** Gunakan method push untuk newItems dengan parameter newItem
+>- **[Line 80 Source Code handleAddItemToCart]** Panggil method updateShopItem dengan parameter newItem dan true
+>- **[Line 82 Source Code handleAddItemToCart]** Set state-nya menggunakan variabel newItems dan newBalance
+##### Latihan Nomor 3
+>- **[Line 72 Source Code handleAddItemToCart]** Membuat if condition apabila balance atau saldo lebih kecil dari harga item
+>- **[Line 73 Source Code handleAddItemToCart]** Menambahkan alert berupa notification bahwa balance tidak cukup menggunakan method window.alert()
 
 #### 2. Menurut pemahaman kamu selama pengerjaan tutorial ini, apa perbedaan antara state dan props?
-> State adalah sebuah data yang bersifat private dari suatu component. Jadi, state hanya tersedia untuk component tersebut dan tidak bisa di akses dari component lain. Suatu component dapat melakukan perubahan terhadap state-nya sendiri sehingga state akan selalu berubah-ubah. Pada tutorial 7 kali ini, **cartItems** merupakan sebuah state. Pada list items yang akan dimasukkan ke keranjang, cartItems dapat ditambahkan dan dihapus sesuai props item yang di klik. Sementara itu, props adalah singkatan dari property yang mirip seperti atribut-atribut pada tag HTML. Dalam functional component, props adalah parameternya, tetapi jika component-nya berbentuk class, props adalah property dari class yang dapat diakses melalui keyword ‘this’. Pada tutorial kali ini, contoh dari props yaitu **item** pada `handleAddItemToCart = (item)`. 
+>- State adalah sebuah data yang bersifat private dari suatu component. Jadi, state hanya tersedia untuk component tersebut dan tidak bisa di akses dari component lain. Suatu component dapat melakukan perubahan terhadap state-nya sendiri sehingga state akan selalu berubah-ubah. 
+>- Pada tutorial 7 kali ini, **cartItems** merupakan sebuah state. Pada list items yang akan dimasukkan ke keranjang, cartItems dapat ditambahkan dan dihapus sesuai props item yang di klik. Sementara itu, props adalah singkatan dari property yang mirip seperti atribut-atribut pada tag HTML. Dalam functional component, props adalah parameternya, tetapi jika component-nya berbentuk class, props adalah property dari class yang dapat diakses melalui keyword ‘this’. Pada tutorial kali ini, contoh dari props yaitu **item** pada `handleAddItemToCart = (item)`. 
 > Referensi: https://www.dumetschool.com/
 
 #### 3. Menurut kamu, apakah sebaiknya kita menggunakan component (e.g. List, Item) dalam React? sebutkan alasannya.
@@ -32,17 +48,18 @@ List Item akan muncul kembali.)
 #### 4. Apa perbedaan class component dan functional component?
 > Secara definisi, `class component` merupakan kelas sederhana yang terdiri dari beberapa fungsi untuk menambahkan fungsionalitas ke aplikasi. Sementara itu, `functional component` adalah komponen yang merupakan fungsi JavaScript. 
 > Untuk perbedaan yang lebih detail, saya lampirkan pada tabel di bawah:
-| Functional Component | Class Component | 
-| ---------------------| --------------- | 
-| Digunakan untuk merepresentasikan static data | Digunakan untuk dynamic sources dari data  | 
-| Tidak bisa menangani fetching data | Menangani setiap data yang mungkin berubah (fetching data, user events, etc.) | 
-| Code mudah untuk ditulis | Banyak code yang perlu ditulis | 
+>
+>| Functional Component | Class Component | 
+>| ---------------------| --------------- | 
+>| Digunakan untuk merepresentasikan static data | Digunakan untuk dynamic sources dari data  | 
+>| Tidak bisa menangani fetching data | Menangani setiap data yang mungkin berubah (fetching data, user events, etc.) | 
+>| Code mudah untuk ditulis | Banyak code yang perlu ditulis | 
 > Referensi: Udemy Course
 
 #### 5. Dalam react, apakah perbedaan component dan element?
-> `Element` adalah objek biasa atau representasi virtual yang menjelaskan apa yang ingin kita tampilkan di screen dalam bentuk DOM nodes atau komponen lainnya. Elemen dapat berisi elemen lain dalam props. 
-> Secara sederhana, `component` dapat didefinisikan sebagai fungsi. Komponen bisa dideklarasikan pada beberapa cara, seperti menggunakan render() method. Fungsi komponen reaksi render() ini mengembalikan DOM Tree dari react elements di belakang layar. Ada beberapa pemetaan kompleks dan logika diff yang terlibat, tetapi pada dasarnya elemen React ini memetakan ke elemen DOM.
-> Referensi: https://reactjs.org
+> - `Element` adalah objek biasa atau representasi virtual yang menjelaskan apa yang ingin kita tampilkan di screen dalam bentuk DOM nodes atau komponen lainnya. Elemen dapat berisi elemen lain dalam props. 
+> - Secara sederhana, `component` dapat didefinisikan sebagai fungsi. Komponen bisa dideklarasikan pada beberapa cara, seperti menggunakan render() method. Fungsi komponen reaksi render() ini mengembalikan DOM Tree dari react elements di belakang layar. Ada beberapa pemetaan kompleks dan logika diff yang terlibat, tetapi pada dasarnya elemen React ini memetakan ke elemen DOM.
+> - Referensi: https://reactjs.org
 
 ----------
 
