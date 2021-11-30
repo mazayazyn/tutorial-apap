@@ -6,6 +6,9 @@ import { Fab } from "@material-ui/core";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ViewStreamIcon from "@mui/icons-material/ViewStream";
+// Import Button Delete
+import DeleteIcon from "@mui/icons-material/Delete";
+import { IconButton } from "@material-ui/core";
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -39,6 +42,9 @@ export default class Home extends React.Component {
                     <div className = "row mt-3">
                         {!this.state.cartHidden ? (
                             <div className="col-sm">
+                                <IconButton onClick = {this.handleDeleteAllItem}>
+                                    <h6>Delete All</h6><DeleteIcon/>
+                                </IconButton>
                                 <List
                                     title = "My Cart"
                                     items = {this.state.cartItems}
@@ -108,5 +114,17 @@ export default class Home extends React.Component {
         const cartHidden = this.state.cartHidden;
         this.setState({ cartHidden: !cartHidden });
     };
+
+    handleDeleteAllItem = () => {
+        // Inisialisasi variabel balance dan cartItems
+        let balance = this.state.balance;
+        let cartItems = [...this.state.cartItems];
+        for (let item in cartItems) {
+            this.updateShopItem(cartItems[item], false)
+            let price = cartItems[item].price;
+            balance += price; // Tambahkan var balance dengan harga setiap item
+        }
+        this.setState({ cartItems: [], balance: balance }); // Set State
+    }
 
 }
