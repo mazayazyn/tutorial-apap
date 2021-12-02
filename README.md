@@ -22,7 +22,6 @@ this.setState({
     quantity: 0
 })
 ```
-> Jadi, kode tersebut dibutuhkan ketika melakukan addItem dan editItem karena pada kedua fungsi ini akan terdapat value yang di-assign ke state id, title, price, description, category, dan quantity sehingga ketika akan membuka lagi form tersebut harus di hapus value dengan cara menggunakan kode di atas.
 
 #### 2. Jelaskan fungsi dari async dan await!
 > - `async` dan `await` merupakan sebuah syntax khusus yang digunakan untuk bekerja dengan Promise dan bertujuan agar prosesnya nyaman dan mudah untuk digunakan.
