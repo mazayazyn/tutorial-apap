@@ -30,13 +30,13 @@ this.setState({
 > `await` berfungsi untuk menunda sebuah kode dijalankan sampai proses `async` berhasil. Sama seperti `async` karena `await` juga akan mengembalikan Promise. Namun kode yang pada fungsi `await` ini baru dapat dijalankan ketika Promise sudah resolved.
 
 #### 3. Masukkan jawaban dari Screenshot yang diperintahkan di halaman 9 pada Component Lifecycle pada pertanyaan ini.
-![shouldComponentUpdate() tidak muncul](https://ibb.co/HH2ZLvn)
+> - shouldComponentUpdate() tidak muncul (https://ibb.co/HH2ZLvn)
 Hal tersebut dikarenakan shouldComponentUpdate hanya akan dipanggil ketika props atau state dari sebuah Component berubah, sedangkan kita tidak mengubah props atau state pada komponen Items.
 
-![Error pada shouldComponentUpdate()](https://ibb.co/3zKGk6b)
+> - Error pada shouldComponentUpdate() (https://ibb.co/3zKGk6b)
 Error muncul setelah kita menambahkan handler dan button isLoading serta mengubah isLoading menjadi false. Error yang muncul disebabkan karena tidak mengembalikan nilai boolean yang menentukan apakah component harus diupdate atau tidak. 
 
-![shouldComponentUpdate() muncul](https://ibb.co/2hb6CgC)
+> - shouldComponentUpdate() muncul (https://ibb.co/2hb6CgC)
 Error sudah hilang dan shouldComponentUpdate() muncul setelah kita memberikan return true di shouldComponentUpdate() agar component selalu terupdate ketika props atau state berubah.
 
 #### 4. Jelaskan fungsi dari `componentDidMount`, `shouldComponentUpdate`, `componentDidUpdate`, `componentWillReceiveProps`, `componentWillUnmount`.
