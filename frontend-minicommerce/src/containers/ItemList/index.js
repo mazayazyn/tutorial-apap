@@ -36,6 +36,7 @@ class ItemList extends Component {
         this.handleSubmitEditItem = this.handleSubmitEditItem.bind(this);
         this.handleDeleteItem = this.handleDeleteItem.bind(this);
         this.handleAddToCart = this.handleAddToCart.bind(this);
+        this.handleDeleteAllItem = this.handleDeleteAllItem.bind(this);
         this.loadData = this.loadData.bind(this);
     }
 
@@ -83,6 +84,10 @@ class ItemList extends Component {
         })
     }
 
+    handleDeleteAllItem = () => {
+        this.setState({ carts: []});
+    }
+
     handleChangeField(event) {
         const { name, value } = event.target;
         this.setState({ [name]: value });
@@ -103,7 +108,8 @@ class ItemList extends Component {
                 category: this.state.category,
                 quantity: this.state.quantity
             };
-            await APIConfig.post("/item", data); this.setState({
+            await APIConfig.post("/item", data);
+            this.setState({
                 title: "",
                 price: 0,
                 description: "",
@@ -234,7 +240,7 @@ class ItemList extends Component {
             }
         }
         catch (error) {
-            alert();
+            alert("Item berhasil ditambahkan ke cart");
             console.log(error);
         }
     }
@@ -264,17 +270,20 @@ class ItemList extends Component {
                     <div className = "row mt-3">
                         {!this.state.cartHidden ? (
                             <div className="col-sm">
-                                <Button className = {classes.buttonColour}>
-                                    Back
+                                <Button
+                                    style = {{ color: "white", background: "#3C91E6" }}
+                                >
+                                    BACK
                                 </Button>
-                                <Button className = {classes.buttonColour}>
-                                    Checkout
+                                <Button
+                                    style = {{ color: "white", background: "#3C91E6" }}
+                                    onClick = {this.handleDeleteAllItem}
+                                >
+                                    CHECKOUT
                                 </Button>
                                 <h1 className = {classes.title}>Cart Items</h1>
                                 <List
-                                    // title = "My Cart"
                                     items = {this.state.carts}
-                                    // onItemClick = {this.handleRemoveItemFromCart}
                                     isShopList = {false}
                                 ></List>
                             </div>
