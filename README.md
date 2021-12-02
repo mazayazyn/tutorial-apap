@@ -4,6 +4,50 @@
 
 ---------
 
+## Tutorial 8
+### What I have learned today
+
+Pada tutorial terakhir, saya menggunakan ReactJS juga seperti tutorial 7. Bedanya adalah tutorial 8 ini telah mengintegrasikan antara backend dan frontend. Jadi, saya menjalankan dua project sekaligus, yaitu project backend dengan Springboot yang diclone melalui Github Asdos dan project frontend yang dibuat dengan menggunakan React. Adapun hal-hal yang saya pelajari pada tutorial ini, saya rangkum pada jawaban di bawah ini.
+
+### Pertanyaan
+#### 1. Ceritakan langkah - langkah yang kalian lakukan untuk solve LATIHAN no.1, dan mengapa kalian melakukan langkah - langkah tersebut?
+> Saya mengatur state (`setState`) id, title, description, dan category menjadi string kosong dan mengatur price dan quantity menjadi 0. Pengaturan state tersebut dilakukan setelah data add item yang di-input sebelumnya berhasil di-load. Pada potongan kode di bawah bertujuan agar text field pada form add item menjadi kosong setiap kali pengguna ingin menambahkan item baru. 
+```javascript
+this.setState({
+    id: "",
+    title: "",
+    price: 0,
+    description: "",
+    category: "",
+    quantity: 0
+})
+```
+> Kode tersebut dibutuhkan ketika melakukan addItem dan editItem karena pada kedua fungsi ini akan terdapat value yang di-assign ke state id, title, price, description, category, dan quantity sehingga ketika akan membuka lagi form tersebut harus di hapus value dengan cara menggunakan kode di atas.
+
+#### 2. Jelaskan fungsi dari async dan await!
+> `async` dan `await` merupakan sebuah syntax khusus yang digunakan untuk bekerja dengan Promise dan bertujuan agar prosesnya nyaman dan mudah untuk digunakan.
+> `async` adalah fitur yang ada pada javascript dan berfungsi untuk mengubah fungsi menjadi asynchronous atau bersifat non-blocking. Fungsi `async` akan mengembalikan sebuah Promise. 
+> `await` berfungsi untuk menunda sebuah kode dijalankan sampai proses `async` berhasil. Sama seperti `async` karena `await` juga akan mengembalikan Promise. Namun kode yang pada fungsi `await` ini baru dapat dijalankan ketika Promise sudah resolved.
+
+#### 3. Masukkan jawaban dari Screenshot yang diperintahkan di halaman 9 pada Component Lifecycle pada pertanyaan ini.
+![shouldComponentUpdate() tidak muncul](https://ibb.co/HH2ZLvn)
+Hal tersebut dikarenakan shouldComponentUpdate hanya akan dipanggil ketika props atau state dari sebuah Component berubah, sedangkan kita tidak mengubah props atau state pada komponen Items.
+
+![Error pada shouldComponentUpdate()](https://ibb.co/3zKGk6b)
+Error muncul setelah kita menambahkan handler dan button isLoading serta mengubah isLoading menjadi false. Error yang muncul disebabkan karena tidak mengembalikan nilai boolean yang menentukan apakah component harus diupdate atau tidak. 
+
+![shouldComponentUpdate() muncul](https://ibb.co/2hb6CgC)
+Error sudah hilang dan shouldComponentUpdate() muncul setelah kita memberikan return true di shouldComponentUpdate() agar component selalu terupdate ketika props atau state berubah.
+
+#### 4. Jelaskan fungsi dari `componentDidMount`, `shouldComponentUpdate`, `componentDidUpdate`, `componentWillReceiveProps`, `componentWillUnmount`.
+>   - `componentDidMount`: Fungsi ini dipanggil setelah fungsi render dieksekusi dan biasanya digunakan untuk manipulasi DOM atau operasi pemanggilan data (ajax). Seluruh operasi DOM terjadi di fase ini, bukan di dalam method render. Contoh use case yang menggunakan fungsi ini adalah ketika kita ingin mengubah value atau nilai pada suatu state setelah di-render selama beberapa detik. 
+>   - `shouldComponentUpdate`: Fungsi ini dipanggil ketika terjadi suatu perubahan pada state. Selain itu, fungsi ini memiliki return value boolean. Jadi, apabila fungsi mengembalikan nilai true, component akan dirender ulang. Namun sebaliknya , jika yang di-return bernilai false maka tidak dilakukan render ulang. Fungsi ini memiliki 2 parameter, yaitu nextProps dan nextState. Contoh use case yang menggunakan fungsi ini adalah ketika kita ingin memberitahu kepada React apabila output component tidak terpengaruh oleh perubahan state atau props saat ini.
+>   - `componentDidUpdate`: Fungsi ini dipanggil setelah component yang diubah sudah selesai di-render dan digunakan saat melakukan interaksi dengan environment non-React seperti HTTP Request. Seperti componentDidMount, fungsi ini dapat digunakan untuk melakukan operasi DOM setelah data telah diperbaharui. Contoh use case yang menggunakan fungsi ini adalah ketika kita ingin menjalankan suatu fungsi setelah DOM berhasil di-update.
+>   - `componentWillReceiveProps`: Fungsi ini dipanggil saat kita ingin menjalankan suatu kode sebelum component yang di-mount melakukan suatu hal terhadap props yang baru mengalami perubahan. Contoh use case yang menggunakan fungsi ini adalah saat kita ingin memeriksa apakah terdapat perubahan terhadap props dengan membandingkan props yang ada dengan yang baru.
+>   - `componentWillUnmount`: Fungsi ini dipanggil ketika kita ingin menjalankan suatu statement sebelum component dihapus dari DOM. Contoh use case yang menggunakan fungsi ini adalah saat kita melakukan pembatalan network request atau menghilangkan event listener.
+
+---------
+
 ## Tutorial 7
 ### What I have learned today
 
